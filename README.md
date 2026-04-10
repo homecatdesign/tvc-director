@@ -1,8 +1,20 @@
 # TVC Director
 
+[中文版](README_zh.md)
+
 From product brief to cinematic TVC keyframes — your AI advertising creative director.
 
-A skill that turns your AI agent into a **TVC Advertising Creative Director**, handling the complete creative pipeline for television commercials and brand advertising: from a product brief to production-ready Nano Banana Pro keyframe prompts and Seedance Multi-Phase video scripts.
+A skill that turns your AI agent into a **TVC Advertising Creative Director**, handling the complete creative pipeline for television commercials and brand advertising: from a product brief to production-ready **Nano Banana Pro** keyframe prompts and **Seedance** Multi-Phase video scripts.
+
+## Demo
+
+### Car TVC — Cinematic Product Breakdown
+
+https://github.com/user-attachments/assets/541055ed-d716-4087-86e2-a27d375282ed
+
+### Perfume TVC — Brand World Crosscut
+
+https://github.com/user-attachments/assets/df2d51af-acc2-4f34-a228-8b35ea754345
 
 ## Two Core Capabilities
 
@@ -110,27 +122,12 @@ my-tvc-project/
 
 ## Knowledge Base
 
-Knowledge is organized into 4 role-based reference files:
-
 | Role | File | Content | Phase |
 |------|------|---------|-------|
-| Creative Director | `creative.md` | 8 TVC narrative models, visual aesthetics (metaphor, color psychology, brand color, product aesthetics, brand world visual language), creative brief template + 2 examples | Phase 2 |
-| Prompt Engineer | `prompts.md` | 6-layer prompt structure, art style library (A-E), 12 TVC scene types, TVC composition paradigms, visual design checklist | Phase 3-4 |
-| Production | `production.md` | Multi-grid storyboard, video prompt syntax, cinematic product breakdown, brand world shots, match cut, TVC duration templates | Phase 5 |
+| Creative Director | `creative.md` | 8 TVC narrative models, visual aesthetics, creative brief template + 2 examples | Phase 2 |
+| Prompt Engineer | `prompts.md` | 6-layer prompt structure, art style library (A-E), 12 TVC scene types, composition paradigms | Phase 3-4 |
+| Production | `production.md` | Multi-grid storyboard, video prompt syntax, cinematic product breakdown, brand world shots | Phase 5 |
 | Output & Iteration | `infra.md` | Output format templates, iteration guide (11 failure modes) | Phase 4-5-6-7 |
-
-## Relationship to aigc-director
-
-This skill is **distilled from** [aigc-director](https://github.com/Ethanxwang/aigc-director) — sharing the same Nano Banana Pro prompt engineering layer and art style library, but with the creative framework entirely rebuilt for TVC advertising:
-
-| Layer | aigc-director | tvc-director |
-|-------|--------------|-------------|
-| Prompt Engine | Nano Banana Pro | Nano Banana Pro (same) |
-| Art Styles | A-E library | A-E library (same) |
-| Narrative Models | 11 general models | 8 TVC-specific models |
-| Scene Types | 8 creative scene types | 12 TVC scene types (product/brand/crosscut) |
-| Core Capability | Visual storytelling | Product cinematography + Brand world integration |
-| Video Prompts | General format | Multi-Phase format with product state changes |
 
 ## License
 
