@@ -1,6 +1,6 @@
 ---
 name: tvc-director
-description: "TVC advertising creative director skill for Nano Banana Pro keyframe prompts and Seedance video scripts. Specialized for television commercials and brand advertising — from a product brief to production-ready keyframe prompts and cinematic video scripts. Three core capabilities: (1) Cinematic Product Breakdown — multi-phase product micro-films with precise camera choreography, component disassembly animations, feature visualization, and material macro shots; (2) Brand World Crosscut — interweaving product close-ups with in-context usage scenes via match cuts between phases (outdoor cameras with skydiving/skiing, luxury cars with mountain roads); (3) In-Scene Narrative — product stays in the brand world throughout (worn/held/carried), highlighted through cinematography rather than studio cutaways, ideal for wearables and lifestyle products. Covers TVC narrative models, product cinematography, brand world integration, multi-grid storyboards, and video prompts. Use this skill whenever users want to create TVC ads, product commercials, brand films, product hero videos, or any advertising visual content — even if they just say 'help me make a product video', 'I need a TVC storyboard', or '帮我做一条产品广告'."
+description: "TVC advertising creative director skill for Nano Banana Pro keyframe prompts and Seedance video scripts. Specialized for television commercials and brand advertising — from a product brief to production-ready keyframe prompts and cinematic video scripts. Three core capabilities: (1) Cinematic Product Breakdown — multi-phase product micro-films with precise camera choreography, component disassembly animations, feature visualization, and material macro shots; (2) Brand World Crosscut — interweaving product close-ups with in-context usage scenes via match cuts between phases (outdoor cameras with skydiving/skiing, luxury cars with mountain roads); (3) Lifestyle Film — product stays in the brand world throughout (worn/held/carried), highlighted through cinematography rather than studio cutaways, ideal for wearables and lifestyle products. Covers TVC narrative models, product cinematography, brand world integration, multi-grid storyboards, and video prompts. Use this skill whenever users want to create TVC ads, product commercials, brand films, product hero videos, or any advertising visual content — even if they just say 'help me make a product video', 'I need a TVC storyboard', or '帮我做一条产品广告'."
 ---
 
 # TVC Director · TVC 广告创意导演工作台
@@ -29,7 +29,7 @@ description: "TVC advertising creative director skill for Nano Banana Pro keyfra
 - 每个 Phase 完整待在一个世界里，世界切换发生在 Phase 之间
 - 通过匹配剪辑无缝衔接：滑雪者旋转 → 产品旋转
 
-**3. 场景内叙事（In-Scene Narrative）**
+**3. 生活方式短片（Lifestyle Film）**
 
 产品始终待在品牌世界中，不跳出去做影棚特写：
 
@@ -128,7 +128,7 @@ description: "TVC advertising creative director skill for Nano Banana Pro keyfra
 **品牌调性**：（3-5 个关键词描述品牌气质）
 **叙事模型**：（A-H 中最适合的模型，附一句理由）
 **品牌世界**：（产品在什么样的世界中出场？——使用场景/极限环境/生活方式/纯影棚）
-**产品植入方式**：（产品怎么出现？——电影化拆解/品牌世界穿梭/场景内叙事。选择依据见 `references/treatment.md`）
+**产品植入方式**：（产品怎么出现？——电影化拆解/品牌世界穿梭/生活方式短片。选择依据见 `references/treatment.md`）
 **出镜策略**：（谁出镜？怎么出镜？）
   - 纯产品 / 有人物
   - 人物出镜方式：手部特写 / 身体局部 / 下半脸 / 全身远景 / 背影 / 剪影
@@ -398,7 +398,7 @@ Phase 3 (Y-Zs): [标题]
 - 品牌世界 Phase 描述使用场景的连贯动态
 - 产品世界 Phase 描述产品特写的微观动态
 
-**场景内叙事型**：
+**生活方式短片型**：
 - 产品始终在品牌世界中（穿在身上/戴在手上），不跳出去做影棚特写
 - 通过运镜手法（低角度/慢动作/景深变化/追焦）在场景内自然突出产品
 - 片尾集中做 Hero Shot 收束

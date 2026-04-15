@@ -89,7 +89,7 @@ AI 同步输出 Seedance Multi-Phase 视频提示词（5 Phase / 15s），配合
 - 越野车 → 盘山弯道、沙漠、雪地
 - 每个 Phase 完整待在一个世界里，通过匹配剪辑无缝切换
 
-### 3. 场景内叙事（In-Scene Narrative）
+### 3. 生活方式短片（Lifestyle Film）
 
 产品始终待在品牌世界中，不跳出去做影棚特写：
 
@@ -145,7 +145,7 @@ git clone https://github.com/Ethanxwang/tvc-director.git ~/.claude/skills/tvc-di
 | A | 痛点-解决 | 痛点场景 → 产品拯救 |
 | B | 产品电影化拆解 | 多 Phase 微电影逐步揭示卖点 |
 | C | 品牌世界穿梭 | 使用场景 ↔ 产品特写交叉剪辑 |
-| D | 场景内叙事 | 产品始终在场景中，运镜突出 |
+| D | 生活方式短片 | 产品始终在场景中，运镜突出 |
 | E | 情感锚点 | 情感故事，产品为载体 |
 | F | 蒙太奇揭示 | 视觉奇观 → 产品揭示 |
 | G | 前后对比 | 使用前后的强烈反差 |

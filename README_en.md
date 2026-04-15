@@ -89,7 +89,7 @@ Brand world and product world take turns, connected via match cuts:
 - Off-road vehicles → mountain roads, desert, snow
 - Each Phase stays in one world; world switches happen between Phases
 
-### 3. In-Scene Narrative
+### 3. Lifestyle Film
 
 Product stays in the brand world throughout — no studio cutaways:
 
@@ -145,7 +145,7 @@ git clone https://github.com/Ethanxwang/tvc-director.git ~/.claude/skills/tvc-di
 | A | Problem-Solution | Pain point → product saves the day |
 | B | Cinematic Product Breakdown | Multi-phase micro-film revealing USPs |
 | C | Brand World Crosscut | Scene ↔ product close-up crosscutting |
-| D | In-Scene Narrative | Product stays in scene, highlighted by cinematography |
+| D | Lifestyle Film | Product stays in scene, highlighted by cinematography |
 | E | Emotional Anchor | Emotional story, product as carrier |
 | F | Montage Reveal | Visual spectacle → product reveal |
 | G | Before/After | Before/after strong contrast |
