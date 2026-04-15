@@ -185,10 +185,11 @@ my-tvc-project/
 | Role | File | Content | Loading |
 |------|------|---------|---------|
 | Core Flow | `SKILL.md` | Entry detection, phase transitions, output specs | Always loaded |
-| Creative Director | `creative.md` | 8 TVC narrative models, visual aesthetics, creative brief template + 2 examples | Phase 2 (creative concept) |
-| Prompt Engineer | `prompts.md` | 6-layer prompt structure, art style library (A-E), 12 TVC scene types, composition paradigms | Phase 3-4 (style + assets) |
-| Production | `production.md` | Multi-grid storyboard, video prompt syntax, cinematic product breakdown, brand world shots | Phase 5 (storyboard) |
-| Output & Iteration | `infra.md` | Output format templates, iteration guide (11 failure modes) | Phase 4-7 (on demand) |
+| Creative Director | `treatment.md` | TVC narrative models, casting strategy, category adaptation, visual aesthetics | Treatment (creative proposal) |
+| Shot Language | `shot-language.md` | 6-layer prompt structure, art style library (A-E), 12 TVC scene types, composition paradigms | Look Dev / Pre-production / Storyboard & Shoot |
+| Storyboard & Video | `storyboard.md` | Multi-grid storyboard, video prompt syntax, cinematic product breakdown, brand world shots | Storyboard & Shoot |
+| Pre-production | `pre-production.md` | Asset planning, generation order, asset standards, consistency maintenance | Pre-production |
+| Delivery & Iteration | `delivery.md` | Output format templates, iteration guide (11 failure modes) | Review / Delivery |
 
 ## License
 

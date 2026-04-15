@@ -1,7 +1,7 @@
 # TVC 输出格式与迭代知识库
 
 > **职责**：提示词输出格式模板 + 迭代优化指南。
-> **不管**：创意策略（查 creative.md）、提示词工程（查 prompts.md）、分镜与视频（查 production.md）。
+> **不管**：创意策略（查 treatment.md）、提示词工程（查 shot-language.md）、分镜与视频（查 storyboard.md）。
 
 ---
 
