@@ -8,6 +8,7 @@ A skill that turns your AI agent into a **TVC Advertising Creative Director**, h
 
 ## Key Features
 
+- **Mirrors real TVC production** — Casting & wardrobe, product photography, location scouting, storyboarding, shooting — each stage has a corresponding AI prompt deliverable
 - **End-to-end creative pipeline** — From a one-line brief to deliverable storyboard prompts and video scripts, fully AI-driven
 - **8 TVC narrative models** — Problem-solution, cinematic product breakdown, brand world crosscut, and more
 - **Cinematic visual system** — 5 art style presets (A-E), 12 scene types, per-second camera choreography
@@ -63,9 +64,9 @@ The AI outputs a Seedance Multi-Phase video script (5 phases / 15s). Use the sto
 
 ## Design Philosophy
 
-Traditional AI-generated ads tend to be an endless loop of "product + black background + rotation." TVC Director is different:
+Traditional AI-generated ads tend to be an endless loop of "product + black background + rotation." TVC Director is different — it organizes prompt generation around the real TVC production SOP, so every prompt maps to a specific production stage:
 
-- **Narrative-driven, not template-filling** — Determine the narrative model and creative direction first, then generate visuals
+- **Narrative-driven** — Determine the narrative model and creative direction first, then generate visuals; no mindless template filling
 - **Dual-world crosscutting** — Product close-ups interweave with brand world scenes, telling stories like a real TVC
 - **Per-second camera design** — Every storyboard panel has explicit shot size, angle, lighting, and transition logic
 - **Progressive human-AI collaboration** — Intervene and adjust at every phase; not a black-box one-click generator
@@ -113,17 +114,18 @@ git clone https://github.com/Ethanxwang/tvc-director.git ~/.claude/skills/tvc-di
 
 ## How It Works
 
+The workflow mirrors real TVC advertising production stages:
+
 ```
-"帮我做一条户外相机的30秒TVC"
+"Make a 30-second TVC for an outdoor camera"
         ↓
-  Phase 0: Mode Detection
-  Phase 1: TVC Brief Analysis (product/duration)
-  Phase 2: TVC Creative Concept (2-3 directions → pick → full brief)
-  Phase 3: Art Style Confirmation (A-E)
-  Phase 4: Asset Prompts (product multiview, materials, brand world environments)
-  Phase 5: Storyboard Prompts + Seedance Multi-Phase Video Scripts
-  Phase 6: Iterative Refinement
-  Phase 7: Deliverable Organization
+  Phase 1: Creative Brief        ← Client Brief
+  Phase 2: Creative Proposal     ← Creative Director Pitch
+  Phase 3: Look Development      ← Art Style Lock
+  Phase 4: Pre-production        ← Casting & Wardrobe + Product Photography + Location Scouting
+  Phase 5: Storyboard & Shoot    ← Storyboard + On-set Shooting
+  Phase 6: Review & Iteration    ← Director's Review + Revisions
+  Phase 7: Delivery              ← Final Delivery
         ↓
   Copy-paste-ready Nano Banana Pro prompts,
   Seedance video scripts & creative docs
@@ -186,14 +188,16 @@ my-tvc-project/
 
 ## Knowledge Base Architecture
 
-| Role | File | Content | Loading |
-|------|------|---------|---------|
-| Core Flow | `SKILL.md` | Entry detection, phase transitions, output specs | Always loaded |
-| Creative Director | `treatment.md` | TVC narrative models, casting strategy, category adaptation, visual aesthetics | Treatment (creative proposal) |
-| Shot Language | `shot-language.md` | 6-layer prompt structure, art style library (A-E), 12 TVC scene types, composition paradigms | Look Dev / Pre-production / Storyboard & Shoot |
-| Storyboard & Video | `storyboard.md` | Multi-grid storyboard, video prompt syntax, cinematic product breakdown, brand world shots | Storyboard & Shoot |
-| Pre-production | `pre-production.md` | Asset planning, generation order, asset standards, consistency maintenance | Pre-production |
-| Delivery & Iteration | `delivery.md` | Output format templates, iteration guide (11 failure modes) | Review / Delivery |
+Knowledge base is organized by crew roles in real ad production, loaded on demand:
+
+| Crew Role | File | Real Production Equivalent | Loading |
+|-----------|------|---------------------------|---------|
+| Line Producer | `SKILL.md` | Production workflow control, phase transitions | Always loaded |
+| Creative Director | `treatment.md` | Creative pitches, narrative models, category strategy, casting decisions | Creative Proposal |
+| Director of Photography | `shot-language.md` | Shot language, art style system, scene types, composition paradigms | Look Dev / Storyboard |
+| Production Team | `pre-production.md` | Casting & wardrobe, product photography, location scouting, asset consistency | Pre-production |
+| Director | `storyboard.md` | Storyboard, video scripts, product breakdown, brand world shots | Storyboard & Shoot |
+| Post-production | `delivery.md` | Output formats, iteration guide (11 failure modes) | Review / Delivery |
 
 ## License
 
