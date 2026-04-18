@@ -32,7 +32,7 @@
 - **8 种 TVC 叙事模型** — 痛点-解决、产品电影化拆解、品牌世界穿梭等，覆盖主流广告叙事
 - **电影级视觉系统** — 5 种画风预设（A-E）、12 种场景类型、精确到秒的运镜编排
 - **产品+品牌世界双线叙事** — 不只是产品特写，而是产品在真实场景中的交叉剪辑
-- **即拷即用** — 产出的提示词可直接粘贴到生图模型 / 生视频模型，无需二次加工
+- **即拷即用** — 产出的提示词可直接粘贴到 Nano Banana Pro / Seedance，无需二次加工
 
 ## 成品展示
 
@@ -56,29 +56,29 @@ https://github.com/user-attachments/assets/df2d51af-acc2-4f34-a228-8b35ea754345
 
 AI 会自动进入完整创意流：需求拆解 → 创意构思 → 画风确认 → 资产生成 → 分镜 + 视频脚本。
 
-### Step 2 — AI 生成产品多视图提示词 → 生图模型出图
+### Step 2 — AI 生成产品多视图提示词 → Nano Banana Pro 出图
 
-AI 输出产品多视图提示词，复制到生图模型（edit 模式，传入参考图），得到标准化的多角度产品图：
+AI 输出产品多视图提示词，复制到 Nano Banana Pro（edit 模式，传入参考图），得到标准化的多角度产品图：
 
 <img src="https://github.com/user-attachments/assets/9d97df38-79f1-4a6a-a6bb-0fdbd731faca" width="600" alt="产品多视图" />
 
-### Step 3 — AI 生成 9 宫格分镜提示词 → 生图模型出图
+### Step 3 — AI 生成 9 宫格分镜提示词 → Nano Banana Pro 出图
 
-AI 输出 3×3 多宫格分镜提示词（包含逐格构图、光影、运镜描述），复制到生图模型（edit 模式，传入多视图 + 环境图），得到完整分镜：
+AI 输出 3×3 多宫格分镜提示词（包含逐格构图、光影、运镜描述），复制到 Nano Banana Pro（edit 模式，传入多视图 + 环境图），得到完整分镜：
 
 <img src="https://github.com/user-attachments/assets/1ca54c8a-e1c2-4a13-8e67-461ea327f2ab" width="600" alt="9 宫格分镜" />
 
-### Step 4 — AI 生成 Multi-Phase 视频脚本 → 生视频模型生成视频
+### Step 4 — AI 生成视频提示词 → Seedance 生成视频
 
-AI 同步输出 Multi-Phase 视频提示词（5 Phase / 15s），配合多宫格作为首帧 + 产品多视图作为锚定，双图输入生视频模型生成最终视频。
+AI 同步输出 Seedance Multi-Phase 视频提示词（5 Phase / 15s），配合多宫格作为首帧 + 产品多视图作为锚定，双图输入 Seedance 生成最终视频。
 
 ### 产出物一览
 
 | 产出物 | 工具 | 用途 |
 |--------|------|------|
-| 产品多视图 | 生图模型 (edit) | 产品锚定，供后续步骤引用 |
-| 9 宫格分镜图 | 生图模型 (edit) | 视频首帧 + 视觉校对 |
-| Multi-Phase 视频脚本 | 生视频模型 | 生成 15s 成片 |
+| 产品多视图 | Nano Banana Pro (edit) | 产品锚定，供后续步骤引用 |
+| 9 宫格分镜图 | Nano Banana Pro (edit) | 视频首帧 + 视觉校对 |
+| Multi-Phase 视频脚本 | Seedance | 生成 15s 成片 |
 | 创意方案文档 | — | 完整创意 brief 存档 |
 
 ## 设计理念
@@ -160,21 +160,21 @@ my-tvc-project/
 ├── concept.md                      # TVC 创意方案文档
 ├── storyboard.md                   # 分镜脚本（如有）
 │
-├── assets/                         # 产品资产图提示词（生图模型）
+├── assets/                         # 产品资产图提示词（Nano Banana Pro）
 │   └── prompts/
 │       ├── product-multiview.md
 │       ├── product-detail-01.md
 │       ├── env-01-extreme-sports.md
 │       └── ...
 │
-├── keyframes/                      # 分镜关键帧提示词（生图模型）
+├── keyframes/                      # 分镜关键帧提示词（Nano Banana Pro）
 │   └── prompts/
 │       ├── grid-01-brand-world.md
 │       ├── grid-02-product-world.md
 │       ├── endframe.md
 │       └── ...
 │
-└── video-scripts/                  # Multi-Phase 视频提示词（生视频模型）
+└── video-scripts/                  # Multi-Phase 视频提示词（Seedance）
     ├── segment-01-brand-world.md
     ├── segment-02-product-breakdown.md
     └── ...
@@ -182,9 +182,9 @@ my-tvc-project/
 
 ## 如何使用交付物
 
-1. **产品多视图** — 将 `assets/prompts/product-multiview.md` 中的提示词复制到生图模型，选择 edit 模式，传入参考图
-2. **分镜关键帧** — 将 `keyframes/prompts/` 下的提示词复制到生图模型，edit 模式，传入多视图 + 环境图
-3. **视频脚本** — 将 `video-scripts/` 下的 Multi-Phase 脚本配合多宫格首帧 + 产品多视图，输入生视频模型生成视频
+1. **产品多视图** — 将 `assets/prompts/product-multiview.md` 中的提示词复制到 Nano Banana Pro，选择 edit 模式，传入参考图
+2. **分镜关键帧** — 将 `keyframes/prompts/` 下的提示词复制到 Nano Banana Pro，edit 模式，传入多视图 + 环境图
+3. **视频脚本** — 将 `video-scripts/` 下的 Multi-Phase 脚本配合多宫格首帧 + 产品多视图，输入 Seedance 生成视频
 
 ## 知识库架构
 
