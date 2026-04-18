@@ -4,7 +4,26 @@
 
 From product brief to cinematic TVC keyframes — your AI advertising creative director.
 
-A skill that turns your AI agent into a **TVC Advertising Creative Director**, handling the complete creative pipeline for television commercials and brand advertising: from a product brief to production-ready **Nano Banana Pro** keyframe prompts and **Seedance** Multi-Phase video scripts.
+A skill that turns your AI agent into a **TVC Advertising Creative Director**, handling the complete creative pipeline for television commercials and brand advertising: from a product brief to production-ready keyframe image prompts and video scripts.
+
+## How It Works
+
+The workflow mirrors real TVC advertising production stages:
+
+```
+"Make a 30-second TVC for an outdoor camera"
+        ↓
+  Phase 1: Creative Brief        ← Client Brief
+  Phase 2: Creative Proposal     ← Creative Director Pitch
+  Phase 3: Look Development      ← Art Style Lock
+  Phase 4: Pre-production        ← Casting & Wardrobe + Product Photography + Location Scouting
+  Phase 5: Storyboard & Shoot    ← Storyboard + On-set Shooting
+  Phase 6: Review & Iteration    ← Director's Review + Revisions
+  Phase 7: Delivery              ← Final Delivery
+        ↓
+  Copy-paste-ready keyframe image prompts,
+  video scripts & creative docs
+```
 
 ## Key Features
 
@@ -13,7 +32,7 @@ A skill that turns your AI agent into a **TVC Advertising Creative Director**, h
 - **8 TVC narrative models** — Problem-solution, cinematic product breakdown, brand world crosscut, and more
 - **Cinematic visual system** — 5 art style presets (A-E), 12 scene types, per-second camera choreography
 - **Product + brand world dual narrative** — Not just product close-ups, but crosscut storytelling in real-world scenes
-- **Copy-paste ready** — Output prompts work directly in Nano Banana Pro / Seedance with no rework needed
+- **Copy-paste ready** — Output prompts work directly in your image / video generation models with no rework needed
 
 ## Demo
 
@@ -37,29 +56,29 @@ A real end-to-end example — from a reference photo to a 15-second commercial.
 
 The AI enters the full creative pipeline: brief analysis → creative concept → art style → asset generation → storyboard + video script.
 
-### Step 2 — AI generates multiview prompts → Nano Banana Pro renders
+### Step 2 — AI generates multiview prompts → image model renders
 
-The AI outputs product multiview prompts. Copy to Nano Banana Pro (edit mode, pass in the reference image) to get standardized multi-angle product shots:
+The AI outputs product multiview prompts. Copy to your image generation model (edit mode, pass in the reference image) to get standardized multi-angle product shots:
 
 <img src="https://github.com/user-attachments/assets/9d97df38-79f1-4a6a-a6bb-0fdbd731faca" width="600" alt="Product multiview" />
 
-### Step 3 — AI generates 3×3 storyboard prompts → Nano Banana Pro renders
+### Step 3 — AI generates 3×3 storyboard prompts → image model renders
 
-The AI outputs a 3×3 multi-grid storyboard prompt (with per-panel composition, lighting, and camera direction). Copy to Nano Banana Pro (edit mode, pass in multiview + environment images):
+The AI outputs a 3×3 multi-grid storyboard prompt (with per-panel composition, lighting, and camera direction). Copy to your image generation model (edit mode, pass in multiview + environment images):
 
 <img src="https://github.com/user-attachments/assets/1ca54c8a-e1c2-4a13-8e67-461ea327f2ab" width="600" alt="3×3 storyboard grid" />
 
-### Step 4 — AI generates Multi-Phase video script → Seedance renders video
+### Step 4 — AI generates Multi-Phase video script → video model renders video
 
-The AI outputs a Seedance Multi-Phase video script (5 phases / 15s). Use the storyboard grid as the first frame + product multiview as the anchor, dual-image input to Seedance for the final video.
+The AI outputs a Multi-Phase video script (5 phases / 15s). Use the storyboard grid as the first frame + product multiview as the anchor, dual-image input to your video generation model for the final video.
 
 ### Output Summary
 
 | Deliverable | Tool | Purpose |
 |-------------|------|---------|
-| Product multiview | Nano Banana Pro (edit) | Product anchor for subsequent steps |
-| 3×3 storyboard grid | Nano Banana Pro (edit) | Video first frame + visual QA |
-| Multi-Phase video script | Seedance | Generate 15s final video |
+| Product multiview | Image model (edit) | Product anchor for subsequent steps |
+| 3×3 storyboard grid | Image model (edit) | Video first frame + visual QA |
+| Multi-Phase video script | Video model | Generate 15s final video |
 | Creative brief document | — | Full creative brief for archival |
 
 ## Design Philosophy
@@ -112,25 +131,6 @@ git clone https://github.com/Ethanxwang/tvc-director.git ~/.cursor/skills/tvc-di
 git clone https://github.com/Ethanxwang/tvc-director.git ~/.claude/skills/tvc-director
 ```
 
-## How It Works
-
-The workflow mirrors real TVC advertising production stages:
-
-```
-"Make a 30-second TVC for an outdoor camera"
-        ↓
-  Phase 1: Creative Brief        ← Client Brief
-  Phase 2: Creative Proposal     ← Creative Director Pitch
-  Phase 3: Look Development      ← Art Style Lock
-  Phase 4: Pre-production        ← Casting & Wardrobe + Product Photography + Location Scouting
-  Phase 5: Storyboard & Shoot    ← Storyboard + On-set Shooting
-  Phase 6: Review & Iteration    ← Director's Review + Revisions
-  Phase 7: Delivery              ← Final Delivery
-        ↓
-  Copy-paste-ready Nano Banana Pro prompts,
-  Seedance video scripts & creative docs
-```
-
 ## Entry Modes
 
 | Mode | Trigger | Description |
@@ -160,21 +160,21 @@ my-tvc-project/
 ├── concept.md                      # TVC creative brief
 ├── storyboard.md                   # Storyboard (if applicable)
 │
-├── assets/                         # Product asset prompts (Nano Banana Pro)
+├── assets/                         # Product asset prompts (image model)
 │   └── prompts/
 │       ├── product-multiview.md
 │       ├── product-detail-01.md
 │       ├── env-01-extreme-sports.md
 │       └── ...
 │
-├── keyframes/                      # Storyboard keyframe prompts (Nano Banana Pro)
+├── keyframes/                      # Storyboard keyframe prompts (image model)
 │   └── prompts/
 │       ├── grid-01-brand-world.md
 │       ├── grid-02-product-world.md
 │       ├── endframe.md
 │       └── ...
 │
-└── video-scripts/                  # Multi-Phase video prompts (Seedance)
+└── video-scripts/                  # Multi-Phase video prompts (video model)
     ├── segment-01-brand-world.md
     ├── segment-02-product-breakdown.md
     └── ...
@@ -182,9 +182,9 @@ my-tvc-project/
 
 ## How to Use Deliverables
 
-1. **Product multiview** — Copy prompts from `assets/prompts/product-multiview.md` into Nano Banana Pro, edit mode, pass in reference image
-2. **Storyboard keyframes** — Copy prompts from `keyframes/prompts/` into Nano Banana Pro, edit mode, pass in multiview + environment images
-3. **Video scripts** — Use Multi-Phase scripts from `video-scripts/` with the storyboard grid as first frame + product multiview, input to Seedance
+1. **Product multiview** — Copy prompts from `assets/prompts/product-multiview.md` into your image generation model, edit mode, pass in reference image
+2. **Storyboard keyframes** — Copy prompts from `keyframes/prompts/` into your image generation model, edit mode, pass in multiview + environment images
+3. **Video scripts** — Use Multi-Phase scripts from `video-scripts/` with the storyboard grid as first frame + product multiview, input to your video generation model
 
 ## Knowledge Base Architecture
 
