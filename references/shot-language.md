@@ -1,541 +1,541 @@
-# TVC 提示词工程知识库
+# TVC Prompt Engineering Knowledge Base
 
-> **职责**：Phase 3 画风确认 + Phase 4/5 提示词编写的参考。覆盖 Nano Banana Pro 图片提示词的句法结构、画风选择、场景模板和构图范式。
-> **不管**：创意策略（查 treatment.md）、资产规划与生成顺序（查 pre-production.md）、视频提示词和多宫格（查 storyboard.md）、输出格式与迭代（查 delivery.md）。
-
----
-
-## Part 1: 提示词结构
+> **Scope**: Reference for Phase 3 art style confirmation + Phase 4/5 prompt writing. Covers syntax structure, art style selection, scene templates, and composition paradigms for Nano Banana Pro image prompts.
+> **Not covered here**: Creative strategy (see treatment.md), asset planning and generation order (see pre-production.md), video prompts and multi-panel grids (see storyboard.md), output format and iteration (see delivery.md).
 
 ---
 
-## 一、提示词核心结构
-
-Nano Banana Pro 的最优提示词结构分为六层，按从左到右的顺序排列：
-
-```
-[画质锚定] + [主体描述] + [环境/空间] + [光影] + [构图/镜头] + [画风锚定]
-```
-
-### 各层详解
-
-#### 第一层：画质锚定（前置权重最高）
-
-画质锚定词决定整体生成品质，放在提示词最前面。选择取决于已确认的画风方向。
-
-| 画质锚定词 | 适用画风方向 | 适用场景 |
-|-----------|------------|---------|
-| 真人实拍 | A. 真人实拍 | 真人化角色/场景 |
-| 电影级摄影 | A. 真人实拍 | 真人电影画面 |
-| 真人电影剧照质感 | B. 真人电影剧照 | 漫威/权游等影视级 |
-| 超写实电影画质 | B/C. 电影剧照或CG | 超写实CG场景（⚠️单独使用偏CG） |
-| 超逼真电影画质 | C. 3A游戏CG | 高写实CG场景 |
-| 8K超清分辨率 | 通用 | 所有需要精细质感的场景 |
-| 电影级镜头 | 通用 | 电影感画面 |
-| 大师级CG渲染 | C/D. CG或引擎级 | 3A游戏、动画CG |
-| 虚幻引擎5渲染 | D. 高精CG引擎级 | 追求接近真实的顶级CG |
-| 超写实CG | D. 高精CG引擎级 | 好莱坞视效级CG |
-| 电影级CG视效 | D. 高精CG引擎级 | 头号玩家/阿凡达级视效 |
-
-**按画风方向的组合示例**：
-- **真人实拍**：`真人实拍，电影级摄影，真实皮肤毛孔质感，自然光照` 
-- **真人电影剧照**：`真人电影剧照质感，8K超清分辨率，电影级调色`
-- **3A游戏CG**：`超写实电影画质，8K超清分辨率，电影级调色`
-- **高精CG引擎级**：`虚幻引擎5渲染，8K超清分辨率，次表面散射皮肤，全局光照` 或 `超写实CG，电影级CG视效，8K超清分辨率，电影级调色`
-- **偏摄影感**：`8K超清分辨率，电影级镜头`
-
-#### 第二层：主体描述
-
-**人物描述层次**：
-```
-[身份/名称] + [体态/身形] + [面部特征] + [服装/装备] + [姿态/动作] + [表情/情绪]
-```
-
-**物件/武器描述层次**：
-```
-[类型] + [材质] + [尺寸] + [特殊效果] + [状态]
-```
-
-#### 第三层：环境/空间
-
-```
-[空间类型] + [空间规模] + [材质/表面] + [大气效果] + [环境细节]
-```
-
-#### 第四层：光影
-
-```
-[整体明暗] + [主光源位置和类型] + [光影效果] + [色温/颜色]
-```
-
-#### 第五层：构图/镜头
-
-在提示词中用自然语言指定构图意图和镜头参数。
-
-#### 第六层：画风锚定（收尾兜底）
-
-画风锚定词放在末尾，作为整体风格的兜底保障。**必须与已确认的画风方向一致。**
-
-| 画风锚定词 | 适用画风方向 |
-|-----------|------------|
-| 真人实拍，电影级摄影，真实皮肤毛孔质感，自然光照 | A. 真人实拍 |
-| 真人电影剧照质感，真实皮肤纹理和毛发细节 | B. 真人电影剧照 |
-| 电影胶片色彩，颗粒感 | A/B. 真人方向 |
-| 3A大作3D游戏风格 | C. 3A游戏CG |
-| 电影级调色 | 通用 |
-| 虚幻引擎5渲染，次表面散射皮肤，PBR材质 | D. 高精CG引擎级 |
-| 超写实CG，电影级CG视效，电影级调色 | D. 高精CG引擎级 |
-| 写意光影 | E. 特定美学 |
-| 极简构图 | 通用 |
+## Part 1: Prompt Structure
 
 ---
 
-## 二、画质 × 画风组合速查表
+## 1. Core Prompt Structure
 
-| 视觉目标 | 画风方向 | 画质锚定（前置） | 画风锚定（收尾） |
-|---------|---------|----------------|----------------|
-| 真人实拍 | A | 真人实拍，电影级摄影，8K超清分辨率 | 真实皮肤毛孔质感，自然光照 |
-| 真人电影剧照 | B | 真人电影剧照质感，8K超清分辨率 | 真实皮肤纹理和毛发细节，电影级调色 |
-| 超写实电影（偏CG） | B/C | 超写实电影画质，8K超清分辨率，电影级调色 | — |
-| 3A游戏CG | C | 大师级CG渲染，8K超清分辨率 | 3A大作3D游戏风格 |
-| 高精CG引擎级（人物向） | D | 虚幻引擎5渲染，8K超清分辨率 | 次表面散射皮肤，真实皮肤纹理，PBR材质，全局光照 |
-| 高精CG引擎级（场景向） | D | 超写实CG，电影级CG视效，8K超清分辨率 | PBR材质，全局光照，电影级调色 |
-| 暗黑写实 | A/B/C | 超逼真电影画质，8K材质纹理 | 低调摄影（Low-key Lighting），高对比度，颗粒感 |
-| 宏大场景 | 跟随全局 | 超写实电影画质，8K超清分辨率 | 广角镜头，极低的视角以凸显空间尺度 |
-| 东方古风 | E | 电影级画质，8K | 中国水墨美学，写意光影 |
-| 治愈系 | E | 8K超清分辨率 | Golden Hour暖光，梦幻散景 |
-
----
-
-## 三、多图参考的描述规范
+The optimal prompt structure for Nano Banana Pro consists of six layers, arranged left to right:
 
 ```
-构图核心 (Composition):
-前景：[角色/物体]（图1）[姿态/位置描述]。[外观细节]。
-中景/背景：[角色/物体]（图2）[姿态/位置描述]。[外观细节]。
-光影 (Lighting):
-[光源1描述]。
-[光源2描述]。
-关键细节：[材质反射/倒影/特殊效果]。
-镜头语言：[镜头类型]，[视角]，[景深]。
+[Image quality anchor] + [Subject description] + [Environment/space] + [Lighting] + [Composition/camera] + [Art style anchor]
 ```
 
----
+### Layer-by-Layer Breakdown
 
-## 四、提示词长度控制
+#### Layer 1: Image Quality Anchor (Highest front-weighted priority)
 
-| 场景复杂度 | 建议长度 | 说明 |
-|-----------|---------|------|
-| 简单（单主体+简单背景） | 30-80字 | 如角色三视图、物件特写 |
-| 中等（主体+环境+光影） | 80-150字 | 如环境概念图、单人场景 |
-| 复杂（多层构图+叙事） | 150-300字 | 如对峙画面、多人场景 |
+Image quality anchor words determine the overall generation quality and are placed at the very beginning of the prompt. The choice depends on the confirmed art style direction.
 
-**原则**：描述精度 > 描述长度。
+| Image quality anchor | Applicable art style direction | Applicable scenes |
+|---------------------|-------------------------------|-------------------|
+| Live-action photography | A. Live-action photography | Live-action characters/scenes |
+| Cinematic photography | A. Live-action photography | Live-action film visuals |
+| Live-action film still quality | B. Live-action film still | Marvel/Game of Thrones film-grade |
+| Hyperrealistic cinematic quality | B/C. Film still or CG | Hyperrealistic CG scenes (⚠️ alone skews toward CG) |
+| Ultra-photorealistic cinematic quality | C. AAA game CG | High-realism CG scenes |
+| 8K ultra-high resolution | Universal | All scenes requiring fine texture |
+| Cinematic lens | Universal | Cinematic imagery |
+| Master-level CG rendering | C/D. CG or engine-grade | AAA games, animated CG |
+| Unreal Engine 5 rendering | D. High-fidelity CG engine-grade | Top-tier CG approaching photorealism |
+| Hyperrealistic CG | D. High-fidelity CG engine-grade | Hollywood VFX-grade CG |
+| Cinematic CG visual effects | D. High-fidelity CG engine-grade | Ready Player One / Avatar-grade VFX |
 
----
+**Combination examples by art style direction**:
+- **Live-action photography**: `Live-action photography, cinematic photography, realistic skin pore texture, natural lighting`
+- **Live-action film still**: `Live-action film still quality, 8K ultra-high resolution, cinematic color grading`
+- **AAA game CG**: `Hyperrealistic cinematic quality, 8K ultra-high resolution, cinematic color grading`
+- **High-fidelity CG engine-grade**: `Unreal Engine 5 rendering, 8K ultra-high resolution, SSS skin, global illumination` or `Hyperrealistic CG, cinematic CG visual effects, 8K ultra-high resolution, cinematic color grading`
+- **Photography-leaning**: `8K ultra-high resolution, cinematic lens`
 
-## Part 2: 画风锚定词库
+#### Layer 2: Subject Description
 
----
-
-## 一、画风方向选项
-
-| 选项 | 说明 | 视觉效果 |
-|------|------|---------|
-| **A. 真人实拍/摄影级** | 像真实摄影照片 | 类似电影剧照、时装摄影 |
-| **B. 真人电影剧照** | 介于真人和CG之间 | 类似漫威电影角色、权力的游戏 |
-| **C. 3A游戏CG** | 高品质游戏CG渲染 | 类似最终幻想CG、原神过场动画 |
-| **D. 高精CG引擎级** | 全CG但追求"接近真实"的顶级质感 | 类似头号玩家、虚幻引擎5 MetaHuman |
-| **E. 特定美学风格** | 水墨、赛博朋克、动漫等 | 根据具体风格而定 |
-
----
-
-## 二、各方向锚定词与组合
-
-### A. 真人实拍 / 摄影级
-
-| 锚定词 | 适用场景 | 搭配建议 |
-|--------|---------|---------|
-| 真人实拍 | 直接锚定真人照片方向 | + 电影级摄影 + 自然光照 |
-| 电影级摄影 | 强调摄影感而非渲染感 | + 真人实拍 |
-| 真实皮肤毛孔质感 | 强制真人皮肤微观细节 | 用于角色设定图/特写 |
-| RAW照片质感 | 未经后期的原始摄影感 | + 自然光照 |
-| 电影胶片色彩 | 胶片感色调 | + 颗粒感 |
-
-**组合示例**：
-- `真人实拍，电影级摄影，真实皮肤毛孔质感，自然光照` — 纯真人照片级
-- `真人实拍，8K超清分辨率，电影胶片色彩` — 高清真人胶片感
-
-### B. 真人电影剧照
-
-**组合示例**：
-- `真人电影剧照质感，8K超清分辨率，真实皮肤纹理和毛发细节，电影级调色` — 影视级
-- `超写实电影画质，真人电影剧照质感，电影级调色` — 超写实偏真人
-
-### C. 3A 游戏 / CG
-
-关键锚定词：`3A大作3D游戏风格`、`大师级CG渲染`、`超写实电影画质`、`8K超清分辨率`、`电影级调色`
-
-### D. 高精CG引擎级
-
-**核心定位**：全部是CG渲染，但在材质、光照、皮肤等方面无限逼近真实。与C方向的区别：C保留明显的"游戏CG美感"，D追求"以假乱真的CG"。
-
-| 锚定词 | 适用场景 | 搭配建议 |
-|--------|---------|---------|
-| 虚幻引擎5渲染 | 极致光追质感 | + 全局光照 + PBR材质 |
-| 次表面散射皮肤 | 皮肤半透明光感 | + 虚幻引擎5渲染 + 真实皮肤纹理 |
-| PBR材质 | 物理正确的材质渲染 | + 全局光照 |
-| 超写实CG | 直接锚定"追求真实感的CG" | + 电影级调色 |
-| 电影级CG视效 | 好莱坞视效大片级别 | + 8K + 电影级调色 |
-
-**组合示例**：
-- `虚幻引擎5渲染，次表面散射皮肤，真实皮肤纹理，PBR材质，全局光照` — 顶级引擎级CG（人物向）
-- `超写实CG，电影级CG视效，8K超清分辨率，电影级调色` — 好莱坞视效级CG（场景向）
-- `光线追踪渲染，PBR材质，全局光照，电影级调色` — 引擎级CG环境
-
-### E. 特定美学
-
-| 锚定词 | 适用场景 |
-|--------|---------|
-| 中国水墨美学 | 古风/武侠/东方题材 |
-| 赛博朋克美学 | 科幻/未来都市 |
-| 日系动漫风格 | 二次元/番剧质感 |
-| Studio Ghibli风格 | 治愈系/宫崎骏质感 |
-| 低调摄影（Low-key Lighting） | 暗黑/悬疑/恐怖 |
-| Golden Hour暖光 | 治愈/怀旧/情绪片 |
-
----
-
-## 三、C vs D 对比
-
-| 维度 | C. 3A游戏CG | D. 高精CG引擎级 |
-|------|------------|----------------|
-| 皮肤 | 精致但光滑，有理想化美感 | 有毛孔、细纹、肤色不均，接近真实 |
-| 光照 | 游戏级光照，可接受艺术化 | 全局光照+光线追踪，物理正确 |
-| 材质 | 精致但允许风格化 | PBR物理正确，每个表面有真实反射/粗糙度 |
-| 整体感受 | "精致的游戏角色" | "CG还是真的？" |
-
----
-
-## Part 3: TVC 场景类型
-
-> TVC 广告专用的场景类型分类和提示词模板。围绕产品展示、品牌叙事、视觉衔接三大核心诉求设计。
-
----
-
-## 场景类型总览
-
-| 类别 | 场景类型 | 核心功能 |
-|------|---------|---------|
-| 产品世界镜头 | 产品 Hero Shot | 主视觉定调 |
-| 产品世界镜头 | 产品电影化拆解帧 | 技术实力可视化 |
-| 产品世界镜头 | 功能可视化帧 | UI/数据/传感器呈现 |
-| 产品世界镜头 | 材质微距帧 | 工艺细节放大 |
-| 产品世界镜头 | Pack Shot | 包装展示 |
-| 产品世界镜头 | End Frame | 收束定格 |
-| 品牌世界镜头 | 极限运动场景 | 极端环境说服力 |
-| 品牌世界镜头 | 生活方式场景 | 日常使用共鸣 |
-| 品牌世界镜头 | 情感场景 | 人物与产品情感连接 |
-| 品牌世界镜头 | 环境氛围空镜 | 品牌世界观建立 |
-| 交叉衔接帧 | 匹配剪辑过渡帧 | 产品世界 ↔ 品牌世界的视觉桥梁 |
-| 交叉衔接帧 | 产品 Reveal 过渡 | 使用场景 → 产品特写的揭示转场 |
-
----
-
-## 第一类：产品世界镜头
-
----
-
-### 1. 产品 Hero Shot
-
-#### 提示词模板
+**Character description layers**:
 ```
-[画质锚定]，[产品描述]静置于[背景]中央。[光影设计——侧光/轮廓光/顶光]。[材质细节——金属/玻璃/磨砂]。[构图——产品占比/留白]。[画风锚定]。
+[Identity/name] + [Physique/build] + [Facial features] + [Clothing/equipment] + [Pose/action] + [Expression/emotion]
 ```
 
-#### 关键要点
-- **背景克制**：纯色或极简影棚质感
-- **光影至少双光源**：主光（侧光定型）+ 辅光（轮廓光分离背景）
-- **材质必须精写**：金属拉丝、AG 磨砂玻璃、陶瓷光泽等
-- **产品占比**：40%-60% 最佳
-
-#### 示例
+**Object/prop description layers**:
 ```
-8K超清分辨率，电影级产品摄影。一款深空灰钛金属智能手表静置于纯黑背景中央，表盘微微朝向右侧15度。左侧柔和侧光勾勒出钛金属表壳的拉丝纹理和微妙的倒角高光。右侧轮廓光将产品从纯黑背景中分离，在表壳边缘形成一道极细的白色光边。表盘显示深蓝色表面，刻度和指针反射出冷白微光。表带为黑色氟橡胶材质，表面可见细密的菱形压纹。产品占画面中央50%，上方留白30%。极浅景深，焦点在表盘上。产品摄影质感，电影级调色。
+[Type] + [Material] + [Size] + [Special effects] + [State]
+```
+
+#### Layer 3: Environment/Space
+
+```
+[Space type] + [Space scale] + [Materials/surfaces] + [Atmospheric effects] + [Environmental details]
+```
+
+#### Layer 4: Lighting
+
+```
+[Overall brightness/contrast] + [Key light position and type] + [Lighting effects] + [Color temperature/color]
+```
+
+#### Layer 5: Composition/Camera
+
+Specify composition intent and camera parameters using natural language within the prompt.
+
+#### Layer 6: Art Style Anchor (Closing safety net)
+
+Art style anchor words are placed at the end as an overall style safeguard. **Must align with the confirmed art style direction.**
+
+| Art style anchor | Applicable art style direction |
+|-----------------|-------------------------------|
+| Live-action photography, cinematic photography, realistic skin pore texture, natural lighting | A. Live-action photography |
+| Live-action film still quality, realistic skin texture and hair detail | B. Live-action film still |
+| Cinematic film color, grain | A/B. Live-action directions |
+| AAA 3D game style | C. AAA game CG |
+| Cinematic color grading | Universal |
+| Unreal Engine 5 rendering, SSS skin, PBR materials | D. High-fidelity CG engine-grade |
+| Hyperrealistic CG, cinematic CG visual effects, cinematic color grading | D. High-fidelity CG engine-grade |
+| Impressionistic lighting | E. Specific aesthetic style |
+| Minimal composition | Universal |
+
+---
+
+## 2. Image Quality × Art Style Quick Reference
+
+| Visual goal | Art style direction | Image quality anchor (front) | Art style anchor (end) |
+|-------------|--------------------|-----------------------------|------------------------|
+| Live-action photography | A | Live-action photography, cinematic photography, 8K ultra-high resolution | Realistic skin pore texture, natural lighting |
+| Live-action film still | B | Live-action film still quality, 8K ultra-high resolution | Realistic skin texture and hair detail, cinematic color grading |
+| Hyperrealistic cinematic (CG-leaning) | B/C | Hyperrealistic cinematic quality, 8K ultra-high resolution, cinematic color grading | — |
+| AAA game CG | C | Master-level CG rendering, 8K ultra-high resolution | AAA 3D game style |
+| High-fidelity CG engine-grade (character-focused) | D | Unreal Engine 5 rendering, 8K ultra-high resolution | SSS skin, realistic skin texture, PBR materials, global illumination |
+| High-fidelity CG engine-grade (environment-focused) | D | Hyperrealistic CG, cinematic CG visual effects, 8K ultra-high resolution | PBR materials, global illumination, cinematic color grading |
+| Dark realism | A/B/C | Ultra-photorealistic cinematic quality, 8K material texture | Low-key photography (Low-key Lighting), high contrast, grain |
+| Grand epic scene | Follow global direction | Hyperrealistic cinematic quality, 8K ultra-high resolution | Wide-angle lens, extremely low angle to emphasize spatial scale |
+| Eastern classical style | E | Cinematic quality, 8K | Chinese ink wash aesthetics, impressionistic lighting |
+| Healing/warm style | E | 8K ultra-high resolution | Golden Hour warm light, dreamy Bokeh |
+
+---
+
+## 3. Multi-Reference Image Description Format
+
+```
+Composition core (Composition):
+Foreground: [Character/object] (Image 1) [pose/position description]. [Appearance details].
+Midground/background: [Character/object] (Image 2) [pose/position description]. [Appearance details].
+Lighting:
+[Light source 1 description].
+[Light source 2 description].
+Key details: [Material reflections/shadows/special effects].
+Camera language: [Lens type], [angle], [depth of field].
 ```
 
 ---
 
-### 2. 产品电影化拆解帧
+## 4. Prompt Length Control
 
-#### 提示词模板
+| Scene complexity | Recommended length | Notes |
+|-----------------|-------------------|-------|
+| Simple (single subject + simple background) | 30–80 words | e.g., character turnaround sheet, product close-up |
+| Medium (subject + environment + lighting) | 80–150 words | e.g., environment concept art, single-person scene |
+| Complex (multi-layer composition + narrative) | 150–300 words | e.g., confrontation shot, multi-person scene |
+
+**Principle**: Descriptive precision > descriptive length.
+
+---
+
+## Part 2: Art Style Anchor Word Library
+
+---
+
+## 1. Art Style Options
+
+| Option | Description | Visual effect |
+|--------|-------------|---------------|
+| **A. Live-action photography / photographic** | Looks like real photography | Similar to film stills, fashion photography |
+| **B. Live-action film still** | Between live-action and CG | Similar to Marvel film characters, Game of Thrones |
+| **C. AAA game CG** | High-quality game CG rendering | Similar to Final Fantasy CG, Genshin Impact cutscenes |
+| **D. High-fidelity CG engine-grade** | All CG but pursuing "near-photorealistic" top-tier quality | Similar to Ready Player One, Unreal Engine 5 MetaHuman |
+| **E. Specific aesthetic style** | Ink wash, cyberpunk, anime, etc. | Varies by specific style |
+
+---
+
+## 2. Anchor Words and Combinations by Style
+
+### A. Live-Action Photography / Photographic
+
+| Anchor word | Applicable scenes | Pairing suggestions |
+|-------------|------------------|---------------------|
+| Live-action photography | Directly anchors live-action photo direction | + Cinematic photography + Natural lighting |
+| Cinematic photography | Emphasizes photographic feel over rendered feel | + Live-action photography |
+| Realistic skin pore texture | Forces live-action skin micro-details | For character reference sheets / close-ups |
+| RAW photo quality | Unprocessed raw photography feel | + Natural lighting |
+| Cinematic film color | Film-grade color toning | + Grain |
+
+**Combination examples**:
+- `Live-action photography, cinematic photography, realistic skin pore texture, natural lighting` — Pure live-action photo-grade
+- `Live-action photography, 8K ultra-high resolution, cinematic film color` — High-definition live-action film grain
+
+### B. Live-Action Film Still
+
+**Combination examples**:
+- `Live-action film still quality, 8K ultra-high resolution, realistic skin texture and hair detail, cinematic color grading` — Broadcast/film-grade
+- `Hyperrealistic cinematic quality, live-action film still quality, cinematic color grading` — Hyperrealistic leaning live-action
+
+### C. AAA Game / CG
+
+Key anchor words: `AAA 3D game style`, `Master-level CG rendering`, `Hyperrealistic cinematic quality`, `8K ultra-high resolution`, `Cinematic color grading`
+
+### D. High-Fidelity CG Engine-Grade
+
+**Core positioning**: Entirely CG rendering, but in terms of materials, lighting, and skin, infinitely approaching photorealism. Difference from direction C: C retains a clear "game CG aesthetic", D pursues "indistinguishable from real CG".
+
+| Anchor word | Applicable scenes | Pairing suggestions |
+|-------------|------------------|---------------------|
+| Unreal Engine 5 rendering | Extreme ray-traced quality | + Global illumination + PBR materials |
+| SSS skin | Subsurface light translucency in skin | + Unreal Engine 5 rendering + Realistic skin texture |
+| PBR materials | Physically correct material rendering | + Global illumination |
+| Hyperrealistic CG | Directly anchors "CG pursuing realism" | + Cinematic color grading |
+| Cinematic CG visual effects | Hollywood VFX blockbuster-grade | + 8K + Cinematic color grading |
+
+**Combination examples**:
+- `Unreal Engine 5 rendering, SSS skin, realistic skin texture, PBR materials, global illumination` — Top-tier engine-grade CG (character-focused)
+- `Hyperrealistic CG, cinematic CG visual effects, 8K ultra-high resolution, cinematic color grading` — Hollywood VFX-grade CG (environment-focused)
+- `Ray-traced rendering, PBR materials, global illumination, cinematic color grading` — Engine-grade CG environment
+
+### E. Specific Aesthetic Style
+
+| Anchor word | Applicable scenes |
+|-------------|------------------|
+| Chinese ink wash aesthetics | Classical / wuxia / Eastern themes |
+| Cyberpunk aesthetics | Sci-fi / futuristic urban |
+| Japanese anime style | 2D animation / anime quality |
+| Studio Ghibli style | Healing / Miyazaki quality |
+| Low-key photography (Low-key Lighting) | Dark / mystery / horror |
+| Golden Hour warm light | Healing / nostalgic / emotional |
+
+---
+
+## 3. C vs D Comparison
+
+| Dimension | C. AAA game CG | D. High-fidelity CG engine-grade |
+|-----------|----------------|----------------------------------|
+| Skin | Refined but smooth, idealized beauty | Pores, fine lines, uneven skin tone — close to real |
+| Lighting | Game-level lighting, artistic stylization acceptable | Global illumination + ray tracing, physically correct |
+| Materials | Refined but stylization allowed | PBR physically correct, every surface has real reflectance/roughness |
+| Overall feel | "A refined game character" | "Is this CG or real?" |
+
+---
+
+## Part 3: TVC Scene Types
+
+> Scene type classifications and prompt templates specific to TVC advertising. Designed around three core objectives: product showcase, brand narrative, and visual transitions.
+
+---
+
+## Scene Types Overview
+
+| Category | Scene type | Core function |
+|----------|-----------|---------------|
+| Product World shots | Product Hero Shot | Setting the key visual tone |
+| Product World shots | Cinematic product breakdown frame | Visualizing technical capability |
+| Product World shots | Feature visualization frame | UI / data / sensor presentation |
+| Product World shots | Material macro frame | Amplifying craftsmanship details |
+| Product World shots | Pack Shot | Packaging display |
+| Product World shots | End Frame | Closing freeze frame |
+| Brand World shots | Extreme sports scene | Extreme environment credibility |
+| Brand World shots | Lifestyle scene | Daily use resonance |
+| Brand World shots | Emotional scene | Emotional connection between person and product |
+| Brand World shots | Atmospheric establishing shot | Building brand worldview |
+| Crosscut transition frames | Match cut transition frame | Visual bridge between Product World and Brand World |
+| Crosscut transition frames | Product Reveal transition | Reveal transition from usage scene to product close-up |
+
+---
+
+## Category 1: Product World Shots
+
+---
+
+### 1. Product Hero Shot
+
+#### Prompt Template
 ```
-[画质锚定]，[产品名]的[组件描述]悬浮拆解状态。[各组件的空间位置关系]。[核心传感器/芯片发光效果]。[影棚侧光]。[画风锚定]。
+[Image quality anchor], [product description] resting at the center of [background]. [Lighting design — side light / rim light / top light]. [Material details — metal / glass / matte]. [Composition — product proportion / negative space]. [Art style anchor].
 ```
 
-#### 关键要点
-- **悬浮间距**：组件之间需要描述具体的空间层次关系
-- **发光元素**：芯片、传感器等加入微弱自发光效果
-- **组件数量控制**：3-5 个组件层级最佳
+#### Key Points
+- **Restrained background**: Solid color or minimal studio quality
+- **At least two light sources**: Key light (side light for form definition) + fill light (rim light to separate from background)
+- **Material must be described in detail**: Brushed metal, AG matte glass, ceramic gloss, etc.
+- **Product proportion**: 40%–60% is optimal
 
-#### 示例
+#### Example
 ```
-8K超清分辨率，电影级CG视效。一款智能手表的电影化拆解状态，各组件沿垂直轴线悬浮展开。最上层：蓝宝石玻璃表镜，边缘折射出彩虹色光晕。第二层：AMOLED显示面板，屏幕发出微弱的蓝色自发光。第三层：钛金属中框，可见精密CNC加工痕迹。第四层：主板和传感器模组，核心芯片发出淡绿色微光，电路走线如发丝般精密。最底层：陶瓷后盖，光学心率传感器发出红色脉冲光。各层间距均匀，整体呈微俯视3/4角度。纯黑渐变背景，左侧影棚侧光照亮各组件边缘。超写实CG，电影级调色。
+8K ultra-high resolution, cinematic product photography. A deep space gray titanium metal smartwatch resting at the center of a pure black background, the dial tilted slightly 15 degrees to the right. Soft side light from the left traces the brushed texture of the titanium case and the subtle chamfer highlights. Rim light from the right separates the product from the pure black background, forming an ultra-thin white light edge along the case rim. The dial shows a deep blue surface, with scales and hands reflecting cold white micro-light. The strap is black fluoroelastomer material with visible fine diamond-pattern embossing on the surface. The product occupies 50% of the center of the frame, with 30% negative space above. Very shallow depth of field, focal point on the dial. Product photography quality, cinematic color grading.
 ```
 
 ---
 
-### 3. 功能可视化帧
+### 2. Cinematic Product Breakdown Frame
 
-#### 提示词模板
+#### Prompt Template
 ```
-[画质锚定]，[产品]的屏幕/界面展示。[屏幕内容详细描述——UI元素/数据/图表]。[屏幕发光对周围环境的影响]。[产品本体在画面中的位置和状态]。[光影——以屏幕自发光为主光源]。[画风锚定]。
+[Image quality anchor], [product name]'s [component description] in floating exploded state. [Spatial positional relationships between components]. [Core sensor / chip glow effect]. [Studio side light]. [Art style anchor].
 ```
 
-#### 关键要点
-- **屏幕内容必须具体**：用几何形状描述 UI 布局，避免要求精确文字
-- **屏幕光溢出效果**：屏幕的光照亮周围表面
-- **暗环境增强效果**：让屏幕成为画面主光源
+#### Key Points
+- **Float spacing**: Describe specific spatial layer relationships between components
+- **Glowing elements**: Add subtle self-illumination effects to chips, sensors, etc.
+- **Control component count**: 3–5 component layers is optimal
 
-#### 示例
+#### Example
 ```
-8K超清分辨率，电影级产品摄影。暗光环境中，一款智能手表佩戴在手腕上，表盘朝向镜头。屏幕显示运动监测界面：中央是一个大尺寸绿色心率数字，周围环绕三个彩色圆环进度条（红/绿/蓝），底部是一条实时心率波形曲线，波峰处发出微弱的绿色脉冲光。屏幕的冷蓝色光芒溢出到手腕皮肤上，在皮肤表面形成柔和的蓝色光晕。背景全黑，仅屏幕光作为画面唯一光源。近景特写，微俯视角度，极浅景深，焦点在屏幕上，手腕边缘柔和虚化。产品摄影质感，电影级调色。
+8K ultra-high resolution, cinematic CG visual effects. A smartwatch in a cinematic exploded view, components floating apart along the vertical axis. Top layer: sapphire crystal glass, edges refracting rainbow-colored halos. Second layer: AMOLED display panel, screen emitting a faint blue self-illumination. Third layer: titanium mid-frame, with visible precision CNC machining marks. Fourth layer: mainboard and sensor module, the core chip emitting a light green micro-glow, circuit traces as fine as hair. Bottom layer: ceramic back cover, optical heart rate sensor emitting red pulse light. Equal spacing between all layers, overall at a slight overhead 3/4 angle. Pure black gradient background, studio side light from the left illuminating component edges. Hyperrealistic CG, cinematic color grading.
 ```
 
 ---
 
-### 4. 材质微距帧
+### 3. Feature Visualization Frame
 
-#### 提示词模板
+#### Prompt Template
 ```
-[画质锚定]，微距特写[产品部位]的[材质类型]表面。[微观物理细节——纹理/颗粒/反射]。[微距光影——侧光刻画纹理/逆光穿透材质]。[极浅景深，焦点位置]。[画风锚定]。
+[Image quality anchor], [product]'s screen / interface display. [Detailed screen content description — UI elements / data / charts]. [Effect of screen glow on surrounding environment]. [Product body position and state in the frame]. [Lighting — screen self-illumination as key light]. [Art style anchor].
 ```
 
-#### 关键要点
-- **侧光是微距之王**：低角度侧光能最大化刻画表面纹理起伏
-- **物理微观细节**：金属加工刀痕、玻璃微气泡、纤维编织交叉
-- **尺度暗示**：加入灰尘颗粒等微观参照物暗示放大倍率
+#### Key Points
+- **Screen content must be specific**: Describe UI layout using geometric shapes; avoid requesting precise text
+- **Screen light spill effect**: Screen light illuminates surrounding surfaces
+- **Dark environment amplifies effect**: Let the screen serve as the primary light source in the frame
 
-#### 示例
+#### Example
 ```
-8K材质纹理，微距特写。一款钛金属手表表壳的侧面倒角区域。极低角度侧光从左侧掠过，照亮拉丝纹理的每一道精密平行沟槽，沟槽之间的高点反射出锐利白色高光线，低点沉入阴影。倒角与平面交接处可见CNC加工留下的极细同心圆刀痕。表面散落着两三颗微尘颗粒，暗示极端放大的尺度。右侧边缘过渡到AG磨砂玻璃区域，磨砂颗粒在侧光下闪烁如细密星光。极浅景深，焦点在拉丝纹理中段，前景和远端迅速虚化。产品摄影质感，高对比度。
+8K ultra-high resolution, cinematic product photography. In a low-light environment, a smartwatch is worn on a wrist with the dial facing the camera. The screen displays a fitness monitoring interface: a large green heart rate number in the center, surrounded by three colored ring progress bars (red / green / blue), and at the bottom a real-time heart rate waveform curve with faint green pulse light at the peaks. The screen's cold blue glow spills onto the wrist skin, forming a soft blue halo on the skin surface. The background is completely black; only the screen light serves as the sole light source. Close-up, slight overhead angle, very shallow depth of field, focal point on the screen, wrist edges softly bokeh out of focus. Product photography quality, cinematic color grading.
+```
+
+---
+
+### 4. Material Macro Frame
+
+#### Prompt Template
+```
+[Image quality anchor], macro close-up of [product part]'s [material type] surface. [Microscopic physical details — texture / grain / reflectance]. [Macro lighting — side light to sculpt texture / backlight to penetrate material]. [Very shallow depth of field, focal point position]. [Art style anchor].
+```
+
+#### Key Points
+- **Side light is the king of macro**: Low-angle side light maximally sculpts surface texture relief
+- **Physical microscopic detail**: Metal machining tooling marks, glass micro-bubbles, fiber weave intersections
+- **Scale hint**: Add microscopic reference objects such as dust particles to suggest the magnification level
+
+#### Example
+```
+8K material texture, macro close-up. The side chamfer area of a titanium metal watch case. Ultra-low angle side light grazes from the left, illuminating every precise parallel groove in the brushed texture, the high points between grooves reflecting sharp white highlight lines, the low points sinking into shadow. At the junction of chamfer and flat surface, ultra-fine concentric CNC machining marks are visible. Two or three micro-dust particles are scattered on the surface, suggesting an extreme magnification scale. The right edge transitions to an AG matte glass area, the matte grain sparkling like dense starlight under the side light. Very shallow depth of field, focal point at the midpoint of the brushed texture, foreground and far end rapidly falling out of focus. Product photography quality, high contrast.
 ```
 
 ---
 
 ### 5. Pack Shot
 
-#### 提示词模板
+#### Prompt Template
 ```
-[画质锚定]，[产品包装盒描述——形状/颜色/材质]正面朝向镜头，[摆放状态]。[包装盒旁边的产品本体]。[光影——柔和影棚光]。[构图——包装与产品的位置关系]。[画风锚定]。
+[Image quality anchor], [product packaging description — shape / color / material] facing the camera, [placement state]. [Product body beside the packaging]. [Lighting — soft studio light]. [Composition — positional relationship between packaging and product]. [Art style anchor].
 ```
 
-#### 关键要点
-- **包装盒+产品同框**
-- **包装盒角度**：微侧 15-30 度比纯正面更有立体感
-- **柔光为主**
+#### Key Points
+- **Packaging + product in the same frame**
+- **Packaging angle**: A slight 15–30 degree turn gives more dimensionality than a straight-on view
+- **Soft light as primary**
 
-#### 示例
+#### Example
 ```
-8K超清分辨率，产品摄影质感。浅灰色渐变影棚背景上，一个哑光黑色方形包装盒微侧20度摆放于画面左侧，盒面印有烫银品牌标识。包装盒右侧，智能手表本体以3/4角度展示，表盘朝向镜头，屏幕显示时间界面。盒盖微微掀开，露出内衬的深灰色绒面材质。柔和的顶光均匀照亮产品和包装，在背景上形成柔和的椭圆形投影。产品和包装盒共占画面60%，上方和右侧保留留白。产品摄影质感，自然光照。
+8K ultra-high resolution, product photography quality. On a light gray gradient studio background, a matte black square packaging box is placed at a slight 20-degree angle on the left side of the frame, the box face bearing a hot-silver-stamped brand mark. To the right of the box, the smartwatch body is shown at a 3/4 angle with the dial facing the camera, the screen displaying the time interface. The box lid is slightly open, revealing the dark gray suede inner lining. Soft top light evenly illuminates the product and packaging, casting a soft elliptical shadow on the background. The product and packaging box together occupy 60% of the frame, with negative space left above and to the right. Product photography quality, natural lighting.
 ```
 
 ---
 
 ### 6. End Frame
 
-#### 提示词模板
+#### Prompt Template
 ```
-[画质锚定]，[产品描述]以[角度/姿态]静置于[背景]中。[光影——干净、高级]。[构图——产品偏置，留白用于文字叠加]。[画风锚定]。
-```
-
-#### 关键要点
-- **为文字预留空间是核心**：至少 30%-40% 的干净区域给 Logo 和 Slogan
-- **产品姿态稳定**，不要有动感暗示
-- **后期空间**：Logo/Slogan/法律信息在后期叠加
-
-#### 示例
-```
-8K超清分辨率，电影级产品摄影。深空灰渐变背景，画面偏左下方三分之一处，一款智能手表以正面朝向镜头的姿态稳定静置，表盘显示深蓝色界面。柔和的左侧侧光照亮产品，在右侧形成自然过渡的阴影。产品右上方留出画面40%的干净空间，背景渐变均匀无杂物。整体调性沉稳、高级、克制。产品摄影质感，电影级调色。
+[Image quality anchor], [product description] resting at [angle / pose] in [background]. [Lighting — clean, premium]. [Composition — product offset, negative space for text overlay]. [Art style anchor].
 ```
 
----
+#### Key Points
+- **Leaving space for text is the core**: At least 30%–40% clean area for the Logo and Slogan
+- **Product pose is stable**, with no suggestion of movement
+- **Post-production space**: Logo / Slogan / legal information overlaid in post
 
-## 第二类：品牌世界镜头
-
----
-
-### 7. 极限运动场景
-
-#### 提示词模板
+#### Example
 ```
-[画质锚定]，[运动场景环境描述]。[运动员描述——动作/姿态/装备]。[产品在运动员身上的位置和状态]。[运动产生的物理效果——飞溅/气流/雪花]。[光影——自然光]。[构图——动感]。[画风锚定]。
-```
-
-#### 关键要点
-- **冻结最具张力的瞬间**
-- **物理效果增强运动感**：水花飞溅、雪雾翻涌、灰尘飞扬
-- **产品必须可见但不抢戏**
-
-#### 示例
-```
-真人实拍，电影级摄影，8K超清分辨率。阿尔卑斯山脉雪场，正午强烈阳光。一位滑雪运动员正在陡坡高速转弯的冻结瞬间，身体极度压低倾斜，外侧手几乎触及雪面。转弯切雪激起的雪雾形成一道弧形白色浪墙，雪粒在逆光中闪烁如碎钻。运动员左手腕上的智能手表清晰可见，表盘上GPS轨迹界面的绿色光芒与白雪形成对比。低角度侧方追拍视角，运动员沿对角线从左上向右下切入，身后雪雾占据画面上方三分之一。真实皮肤毛孔质感，自然光照，电影级调色。
+8K ultra-high resolution, cinematic product photography. Deep space gray gradient background. In the lower-left third of the frame, a smartwatch rests stably facing the camera, the dial showing a deep blue interface. Soft side light from the left illuminates the product, with a natural transitional shadow forming on the right. The upper-right portion of the frame leaves 40% clean space, the background gradient smooth and unobstructed. Overall tone: composed, premium, restrained. Product photography quality, cinematic color grading.
 ```
 
 ---
 
-### 8. 生活方式场景
+## Category 2: Brand World Shots
 
-#### 提示词模板
+---
+
+### 7. Extreme Sports Scene
+
+#### Prompt Template
 ```
-[画质锚定]，[日常场景环境描述——时间/地点/氛围]。[人物描述——衣着/状态/情绪]。[人物与产品的交互动作]。[环境细节——增强生活感的道具]。[光影——自然光/窗光/暖调]。[构图]。[画风锚定]。
+[Image quality anchor], [sports scene environment description]. [Athlete description — action / pose / equipment]. [Product position and state on the athlete]. [Physical effects from motion — splash / airflow / snow spray]. [Lighting — natural light]. [Composition — dynamic]. [Art style anchor].
 ```
 
-#### 关键要点
-- **"不经意"感是关键**：产品自然出现在生活中
-- **环境道具真实感**：咖啡杯有使用痕迹、桌面有自然杂物
-- **自然光+暖色调**
+#### Key Points
+- **Freeze the most tension-filled moment**
+- **Physical effects amplify sense of motion**: Water splash, snow mist surge, dust cloud
+- **Product must be visible but not dominant**
 
-#### 示例
+#### Example
 ```
-真人实拍，电影级摄影，8K超清分辨率。清晨7点，一间北欧风格公寓的餐桌旁。温暖的侧窗晨光从左侧大窗洒入，在木质餐桌上投下窗棂的光影。一位30岁左右的女性身着米色亚麻衬衫，左手端起白色陶瓷咖啡杯轻抿，右手腕上的智能手表显示今日运动目标完成度。桌面上散落着一份翻开的杂志、一个牛角面包和一小碟黄油。背景是微微虚化的绿植和厨房岛台。中景平视，人物位于画面右侧三分之一处，左侧窗光形成大面积暖色光区。真实皮肤毛孔质感，自然光照，电影胶片色彩。
+Live-action photography, cinematic photography, 8K ultra-high resolution. An alpine ski slope, intense midday sunlight. A skier in the frozen instant of a high-speed carving turn on a steep slope, body extremely compressed and leaning, outside hand nearly touching the snow surface. The snow spray kicked up by the carving turn forms an arcing white wave wall, snow particles sparkling like shattered diamonds in the backlight. The smartwatch clearly visible on the athlete's left wrist, the green glow of the GPS track interface on the dial contrasting against the white snow. Low-angle side-tracking angle, the athlete cuts diagonally from upper-left to lower-right, the snow spray behind occupying the upper third of the frame. Realistic skin pore texture, natural lighting, cinematic color grading.
 ```
 
 ---
 
-### 9. 情感场景
+### 8. Lifestyle Scene
 
-#### 提示词模板
+#### Prompt Template
 ```
-[画质锚定]，[情感场景环境]。[人物描述——关键的情绪表情和肢体语言]。[产品在情感交互中的角色]。[光影——配合情绪的色温和明暗]。[构图——特写或中近景突出表情]。[画风锚定]。
-```
-
-#### 关键要点
-- **情绪通过多通道传递**：微表情 + 肢体 + 光影 + 色调
-- **产品是情感载体**：触发或承载情感的"道具"
-- **避免过度煽情**
-
-#### 示例
-```
-真人实拍，电影级摄影，8K超清分辨率。傍晚客厅，一位年轻父亲坐在沙发上，3岁女儿趴在他的肩膀上已经睡着。他右手轻轻抚着女儿后背，左手腕上的智能手表屏幕亮起，显示来自妻子的消息通知，屏幕柔和的蓝白色光芒照在他脸上。他低头看向手表，嘴角不自觉微微上扬，眼神温柔。暖黄色台灯从画面左侧照来，将父女二人裹在暖色光团中，背景完全虚化为暖色Bokeh光斑。中近景，人物位于画面中央偏右，极浅景深，焦点在父亲的面部表情上。真实皮肤纹理和毛发细节，电影级调色。
+[Image quality anchor], [everyday scene environment description — time / location / atmosphere]. [Subject description — clothing / state / emotion]. [Subject's interaction with the product]. [Environmental details — props that enhance life authenticity]. [Lighting — natural light / window light / warm tones]. [Composition]. [Art style anchor].
 ```
 
----
+#### Key Points
+- **The "incidental" feel is key**: Product appears naturally within everyday life
+- **Environmental props feel authentic**: Coffee cups show signs of use, surfaces have natural clutter
+- **Natural light + warm color tones**
 
-### 10. 环境氛围空镜
-
-#### 提示词模板
+#### Example
 ```
-[画质锚定]，[空间类型和规模]。[环境物理细节——材质/纹理/物件]。[大气效果——雾气/光线/粒子]。[光影设计]。[构图/镜头——广角/俯拍/引导线]。[画风锚定]。
-```
-
-#### 关键要点
-- **无人物**
-- **光影即情绪**：完全依赖光影和色调传递
-- **可用作转场**：色调和构图需考虑前后镜头衔接
-
-#### 示例
-```
-8K超清分辨率，电影级摄影。黎明时分的高原湖泊，湖面如镜面般平静，完美倒映着远处连绵雪山和渐变天空。天际线从深蓝渐变为玫瑰金，最亮处太阳即将升出山脊。湖面上漂浮着一层薄薄的晨雾，雾气在水面上方约一米处缓缓流动。前景是岸边的碎石和一丛枯黄的高山草甸，被浅景深虚化为前景色块。广角镜头，三分法构图，天空占画面上方三分之一，湖面和倒影占中间三分之一，前景岸边占下方三分之一。电影胶片色彩，颗粒感。
+Live-action photography, cinematic photography, 8K ultra-high resolution. 7 AM, beside the dining table of a Nordic-style apartment. Warm morning side light streams in from a large window on the left, casting window frame light patterns on the wooden dining table. A woman in her early 30s wearing a beige linen shirt lifts a white ceramic coffee cup to take a sip with her left hand; her right wrist shows a smartwatch displaying today's exercise goal completion. On the table are scattered an open magazine, a croissant, and a small dish of butter. The background is a softly bokeh-blurred green plant and kitchen island. Medium shot at eye level, subject positioned in the right third of the frame, the window light on the left forming a large warm-toned light area. Realistic skin pore texture, natural lighting, cinematic film color.
 ```
 
 ---
 
-## 第三类：交叉衔接帧
+### 9. Emotional Scene
 
----
-
-### 11. 匹配剪辑过渡帧
-
-设计 Match Cut 中的「桥梁帧」：在 A 尾帧与 B 首帧之间建立可被感知的视觉连续性。Match Cut 的完整技法库见 `storyboard.md` Part 4。
-
----
-
-### 12. 产品 Reveal 过渡
-
-从品牌世界的使用场景平滑过渡到产品世界的特写展示。
-
-过渡路径：`使用场景全景 → 产品局部可见 → 产品占满画面 → 产品 Hero Shot`
-
-#### 提示词模板（三阶段）
-
-**阶段 A（品牌世界 → 产品初现）**：
+#### Prompt Template
 ```
-[画质锚定]，[使用场景中景]。[人物动作使产品自然进入视线]。[产品在画面中清晰但不是焦点]。[环境光照]。[画风锚定]。
+[Image quality anchor], [emotional scene environment]. [Subject description — key emotional expression and body language]. [Product's role in the emotional interaction]. [Lighting — color temperature and brightness matching the emotion]. [Composition — close-up or medium close-up to emphasize expression]. [Art style anchor].
 ```
 
-**阶段 B（过渡帧——产品放大）**：
-```
-[画质锚定]，[近景/特写]，[产品占画面主体]。[使用场景的环境元素虚化为背景]。[光影从环境光过渡到产品摄影光]。[极浅景深，焦点锁定产品]。[画风锚定]。
-```
+#### Key Points
+- **Emotion conveyed through multiple channels**: Micro-expression + body language + lighting + color tone
+- **Product as emotional carrier**: A "prop" that triggers or contains the emotion
+- **Avoid excessive sentimentality**
 
-**阶段 C（产品世界——Hero Shot）**：使用"产品 Hero Shot"模板。
-
-#### 示例（户外运动 → 手表特写 Reveal）
-
-**阶段 A**：
+#### Example
 ```
-真人实拍，电影级摄影，8K超清分辨率。阳光明媚的山顶，一位越野跑者完成冲刺后弯腰双手撑膝喘息，抬起左手腕查看运动数据。智能手表在画面中可见但较小，屏幕绿色光芒在阳光下依然辨识清晰。背景是辽阔的山谷和蓝天。中景，人物位于画面中央，自然光照。真实皮肤毛孔质感，电影级调色。
-```
-
-**阶段 B（过渡帧）**：
-```
-真人实拍，电影级摄影，8K超清分辨率。近景特写运动员左手腕的智能手表，表盘朝向镜头，屏幕显示完成10公里越野跑的统计数据界面。手表占画面60%，表壳上可见阳光在钛金属表面的高光和汗水微珠。手腕皮肤和远处山景完全虚化为暖色调背景Bokeh。极浅景深，焦点在表盘上。自然阳光与微弱的轮廓光混合。产品摄影质感，电影级调色。
+Live-action photography, cinematic photography, 8K ultra-high resolution. Evening living room. A young father sits on a sofa, his 3-year-old daughter asleep on his shoulder. His right hand gently strokes the back of the child, while the screen of the smartwatch on his left wrist lights up showing a message notification from his wife, the screen's soft blue-white glow falling on his face. He looks down at the watch, the corner of his mouth involuntarily curling upward slightly, eyes warm. A warm yellow table lamp from the left side of the frame wraps father and daughter in a warm-toned light pool, the background completely bokeh'd into warm Bokeh light orbs. Medium close-up, subjects positioned center-right of the frame, very shallow depth of field, focal point on the father's facial expression. Realistic skin texture and hair detail, cinematic color grading.
 ```
 
 ---
 
-## Part 4: TVC 构图范式
+### 10. Atmospheric Establishing Shot
 
-TVC 的构图不仅服务于"美"，还必须服务于"传达"。
-
-### 4.1 揭示构图
-
-**经典揭示序列**：
-
+#### Prompt Template
 ```
-第1步：极端微距——观众看到抽象的纹理/线条，不知道是什么
-第2步：缓慢拉远——局部轮廓开始显现，观众开始猜测
-第3步：继续拉远——产品全貌显现，"原来是这个"的认知快感
-第4步：产品完整呈现——在完美构图中展示全貌
+[Image quality anchor], [space type and scale]. [Environmental physical details — materials / textures / objects]. [Atmospheric effects — mist / light / particles]. [Lighting design]. [Composition / camera — wide angle / overhead / leading lines]. [Art style anchor].
 ```
 
-**变体手法**：遮挡揭示、光线揭示、聚焦揭示、旋转揭示。
+#### Key Points
+- **No people**
+- **Light and shadow is the emotion**: Entirely reliant on lighting and color tone to convey feeling
+- **Can serve as a transition**: Color tones and composition must consider how the surrounding shots connect
 
-### 4.2 End Frame 构图标准
-
-| 元素 | 构图位置 | 尺寸要求 |
-|------|---------|---------|
-| **产品** | 画面中心偏左或正中 | 占画面 20%–40% |
-| **品牌 Logo** | 右下角或底部居中 | 清晰可辨但不压过产品 |
-| **Tagline/Slogan** | Logo 上方或产品下方 | 字号小于产品名称 |
-| **背景** | 品牌色或品牌标志性视觉 | 简洁、不分散注意力 |
-
-**End Frame 三法则**：
-1. **3 秒可读**：所有信息必须在 3 秒内被观众读取完毕
-2. **3 个元素以内**：产品 + Logo + Slogan 最多三个信息层级
-3. **3 层视觉层级**：明确的主-次-辅视觉优先级
-
-### 4.3 文字/Logo 安全区域
-
-| 区域 | 定义 | 用途 |
-|------|------|------|
-| **画面安全区** | 边缘内缩 5% | 所有重要视觉元素 |
-| **标题安全区** | 边缘内缩 10% | 所有文字信息 |
-| **上方 1/5** | 顶部 20% | Tagline、标题 |
-| **下方 1/5** | 底部 20% | 产品信息、法律声明 |
-| **中央 60%** | 中心区域 | 核心视觉内容，避免被文字遮挡 |
+#### Example
+```
+8K ultra-high resolution, cinematic photography. A highland lake at dawn, the lake surface still as a mirror, perfectly reflecting the distant mountain range and gradient sky. The horizon transitions from deep blue to rose gold, the sun about to crest the mountain ridge at its brightest point. A thin layer of morning mist floats on the lake, the fog flowing slowly about one meter above the water's surface. The foreground is composed of shoreline pebbles and a clump of yellowed alpine meadow grass, bokeh'd into a foreground color block by shallow depth of field. Wide-angle lens, rule-of-thirds composition: sky occupying the upper third, lake surface and reflection occupying the middle third, foreground shore occupying the lower third. Cinematic film color, grain.
+```
 
 ---
 
-## Appendix: TVC 视觉设计清单
+## Category 3: Crosscut Transition Frames
 
-- [ ] 品牌色是否有明确的植入策略？
-- [ ] 品牌色是否与全片色彩弧线自然融合？
-- [ ] 产品材质之美是否通过正确的光线策略被释放？
-- [ ] 产品镜头是否有"雕塑化"处理？
-- [ ] 产品与负空间的比例是否服务于叙事意图？
-- [ ] 构图是否为文字/Logo 预留了安全区域？
-- [ ] End Frame 是否满足"3 秒可读、3 个元素、3 层层级"？
-- [ ] 是否确定了品牌所属的视觉世界并贯穿全片？
-- [ ] 视觉世界的选择是否匹配品牌调性和目标受众？
+---
+
+### 11. Match Cut Transition Frame
+
+Designing the "bridge frame" within a Match Cut: establishing perceivable visual continuity between the tail frame of A and the lead frame of B. The complete Match Cut technique library is in `storyboard.md` Part 4.
+
+---
+
+### 12. Product Reveal Transition
+
+Smoothly transitioning from a Brand World usage scene to a close-up showcase in Product World.
+
+Transition path: `Usage scene wide shot → Product partially visible → Product fills the frame → Product Hero Shot`
+
+#### Prompt Template (Three-Phase)
+
+**Phase A (Brand World → Product first appears)**:
+```
+[Image quality anchor], [usage scene medium shot]. [Subject action brings product naturally into view]. [Product is clear but not the focal point in the frame]. [Ambient lighting]. [Art style anchor].
+```
+
+**Phase B (Transition frame — Product enlarges)**:
+```
+[Image quality anchor], [close-up / macro], [product occupies frame as the primary subject]. [Environmental elements from the usage scene bokeh'd into the background]. [Lighting transitions from ambient to product photography light]. [Very shallow depth of field, focal point locked on product]. [Art style anchor].
+```
+
+**Phase C (Product World — Hero Shot)**: Use the "Product Hero Shot" template.
+
+#### Example (Outdoor sports → Watch close-up Reveal)
+
+**Phase A**:
+```
+Live-action photography, cinematic photography, 8K ultra-high resolution. A sunlit mountaintop. A trail runner bends over with hands on knees catching breath after finishing a sprint, lifting the left wrist to check exercise data. The smartwatch is visible in the frame but small; the screen's green glow remains clearly legible in the sunlight. The background is a vast valley and blue sky. Medium shot, subject centered, natural lighting. Realistic skin pore texture, cinematic color grading.
+```
+
+**Phase B (Transition frame)**:
+```
+Live-action photography, cinematic photography, 8K ultra-high resolution. Close-up of the athlete's left wrist smartwatch, dial facing the camera, screen displaying the stats interface for completing a 10-kilometer trail run. The watch occupies 60% of the frame; sunlight highlights on the titanium case surface and micro-beads of sweat are visible. The wrist skin and distant mountain scenery are completely bokeh'd into a warm-toned background Bokeh. Very shallow depth of field, focal point on the dial. Natural sunlight mixed with subtle rim light. Product photography quality, cinematic color grading.
+```
+
+---
+
+## Part 4: TVC Composition Paradigms
+
+TVC composition must serve not only "beauty" but also "communication."
+
+### 4.1 Reveal Composition
+
+**Classic reveal sequence**:
+
+```
+Step 1: Extreme macro — audience sees abstract texture / lines, unsure what it is
+Step 2: Slowly pull back — partial outlines begin to emerge, audience starts guessing
+Step 3: Continue pulling back — full product form is revealed, "so that's what it is" moment of recognition
+Step 4: Complete product reveal — showing the full form in a perfect composition
+```
+
+**Variant techniques**: Occlusion reveal, light reveal, focus reveal, rotation reveal.
+
+### 4.2 End Frame Composition Standard
+
+| Element | Composition position | Size requirement |
+|---------|---------------------|-----------------|
+| **Product** | Center of frame, slightly left or centered | 20%–40% of frame |
+| **Brand Logo** | Lower right or bottom center | Clearly legible but not overpowering the product |
+| **Tagline / Slogan** | Above Logo or below product | Font size smaller than product name |
+| **Background** | Brand color or brand signature visual | Simple, not distracting |
+
+**End Frame Three Rules**:
+1. **3-second readability**: All information must be readable by the audience within 3 seconds
+2. **3 elements or fewer**: Product + Logo + Slogan — maximum three information tiers
+3. **3 visual hierarchy levels**: Clear primary–secondary–supporting visual priority
+
+### 4.3 Text/Logo Safe Zones
+
+| Zone | Definition | Purpose |
+|------|-----------|---------|
+| **Frame safe area** | 5% inset from edges | All key visual elements |
+| **Title safe area** | 10% inset from edges | All text information |
+| **Upper 1/5** | Top 20% | Tagline, title |
+| **Lower 1/5** | Bottom 20% | Product information, legal disclaimer |
+| **Central 60%** | Center zone | Core visual content; avoid being obscured by text |
+
+---
+
+## Appendix: TVC Visual Design Checklist
+
+- [ ] Is there a clear integration strategy for the brand color?
+- [ ] Does the brand color blend naturally into the overall color arc of the film?
+- [ ] Is the beauty of the product materials released through the correct lighting strategy?
+- [ ] Have the product shots been given a "sculptural" treatment?
+- [ ] Does the ratio of product to negative space serve the narrative intent?
+- [ ] Has the composition reserved safe zones for text / Logo?
+- [ ] Does the End Frame satisfy "3-second readability, 3 elements, 3 visual tiers"?
+- [ ] Has the visual world the brand inhabits been defined and carried consistently throughout the film?
+- [ ] Does the choice of visual world match the brand tone and target audience?

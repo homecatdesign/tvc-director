@@ -1,242 +1,242 @@
-# TVC 资产图生成框架
+# TVC Asset Image Generation Framework
 
-> **核心使命**：分镜脚本定稿后、出分镜关键帧之前，先生成一套**视觉资产图**——为后续所有画面锁定"人、物、景"的视觉基准。
-> **本质**：资产图 = TVC 的"选角 + 置景 + 产品定妆"。拍真人广告时你也要先定演员、搭场景、摆产品——AI 生成同理。
-> **只有三种资产**：角色三视图、产品图、场景图。不要发明第四种。
+> **Core Mission**: After the storyboard script is finalized and before generating storyboard keyframes, first produce a set of **visual asset images** — establishing the visual baseline for "talent, product, and location" across all subsequent frames.
+> **In essence**: Asset images = the TVC's "casting + set dressing + product wardrobe." Just as you would cast actors, build sets, and style products before shooting a live-action ad — AI generation works the same way.
+> **Only three types of assets**: character turnaround, product images, and scene images. Do not invent a fourth type.
 
 ---
 
-## Part 1: 资产规划——从分镜脚本到资产清单
+## Part 1: Asset Planning — From Storyboard Script to Asset Checklist
 
-> 拿到分镜脚本后，不要急着逐帧出图。扫一遍脚本，回答两个问题：
+> Once you receive the storyboard script, don't rush to generate it frame by frame. Scan the script and answer two questions:
 
-### 问题一：谁出镜？
+### Question 1: Who appears on screen?
 
-- **产品** → 必须做产品图，没有例外
-- **人物/模特** → 判断是否需要角色资产图：
+- **Product** → Product images are mandatory, no exceptions
+- **People / Models** → Determine whether character asset images are needed:
 
-| 判断维度 | 做角色资产图 | 只需出镜者标准描述 |
+| Dimension | Make character asset images | Only need on-screen talent standard description |
 |---------|------------|-----------------|
-| **品类路径** | 身份型（时尚/穿搭/首饰/奢侈品）→ 造型本身就是品牌世界，必须做 | 功能型（科技/工具）且人物只是"使用者背景板" |
-| **植入策略** | 生活方式短片 → 产品穿在身上不离场，人物跨 5 格以上 | 品牌世界穿梭 → 人物仅出现在少数品牌世界面板 |
-| **出镜方式** | 下半身/手部/局部但**跨多格反复出现** → 造型细节累积不一致风险高 | 仅 1-2 格远景剪影/背影群像 |
+| **Category path** | Identity brand world (fashion / styling / jewelry / luxury) → The look itself is the brand world; always required | Functional brand world (tech / tools) and the person is only a "user backdrop" |
+| **Product placement strategy** | Lifestyle Film → Product stays on the person throughout, character appears across 5+ frames | Brand World Crosscut → Character appears in only a few brand world panels |
+| **On-screen presence** | Lower body / hands / partial but **repeatedly across multiple frames** → High risk of accumulated styling inconsistency | Only 1–2 frames of wide-shot silhouettes / back-view crowd shots |
 
-**核心逻辑**：触发角色资产的关键不是"脸是否可见"，而是"**人物造型是否是这条 TVC 的核心视觉元素**"。身份型品牌世界里，即使全片无正脸，服装/配饰/体态就是品牌表达——必须用资产图锁定。
+**Core logic**: The trigger for character assets is not "whether the face is visible," but "**whether the character's styling is a core visual element of this TVC**." In an Identity brand world, even if no full face appears in the entire film, the clothing / accessories / body language are the brand expression — they must be locked in with asset images.
 
-### 问题二：在哪拍？
+### Question 2: Where is it shot?
 
-- 扫分镜中出现的所有场景，归类为几个**视觉上不同的空间**
-- 每个独立空间做一张场景图（锁定氛围、色调、光影基调）
-- 如果全片都在影棚（纯产品电影化）→ 场景图可以不做，影棚氛围在产品图中已经锁定
+- Scan all locations that appear in the storyboard and group them into several **visually distinct spaces**
+- Produce one scene image for each distinct space (locking in the mood, color palette, and lighting key)
+- If the entire film is shot in a studio (pure product cinematic) → scene images can be skipped, as the studio atmosphere is already locked in through the product images
 
-### 生成顺序
+### Generation Order
 
 ```
-① 产品图（最高优先级——产品是 TVC 的灵魂）
-② 角色三视图（如有人出镜——人物要跟产品交互，需要先知道产品长什么样）
-③ 场景图（相对独立，但色调要跟产品图协调）
+① Product images (highest priority — the product is the soul of the TVC)
+② Character turnaround (if people appear — characters need to interact with the product, so know the product's look first)
+③ Scene images (relatively independent, but the color palette should coordinate with the product images)
 ```
 
 ---
 
-## Part 2: 三种资产的定义
+## Part 2: Definitions of the Three Asset Types
 
-> **默认假设：产品参考图存在。** 真实 TVC 都是为已存在的产品做广告——产品官方图/实物照片/电商图几乎必然存在。"无产品参考图"是例外路径（概念产品/虚拟产品/早期设计阶段），仅在用户明确说明产品尚未实体化时启用。
+> **Default assumption: product reference images exist.** Real TVCs advertise products that already exist — official product images / physical photos / e-commerce photos almost certainly exist. "No product reference image" is the exception path (concept products / virtual products / early design stage) and is only activated when the user explicitly states the product is not yet physical.
 >
-> 参考图决定提示词的**写法路径**——两种路径的 prompt 结构完全不同：
-> - **默认路径（有参考图）** → prompt 直接引用"图中产品/图中人物"，**不描述外观细节**（外观由参考图锁定，多余描述反而干扰还原）
-> - **例外路径（无参考图）** → prompt 必须用文字精确描述外观（材质、颜色、形状等），纯文生图
+> Whether a reference image exists determines the **prompt writing path** — the prompt structure differs completely between the two paths:
+> - **Default path (reference image available)** → The prompt directly references "the product in the image / the person in the image" and **does not describe visual details** (appearance is locked by the reference image; extra description actually interferes with reproduction)
+> - **Exception path (no reference image)** → The prompt must precisely describe appearance in text (materials, colors, shapes, etc.) — pure text-to-image
 >
-> **不因用户缺少参考图而阻断流程。** 两条路径都能产出可用的资产图——但产品参考图应在创意简报阶段就主动追问，不应等到前期筹备才临时补问。
+> **Do not block the workflow because the user lacks reference images.** Both paths can produce usable asset images — but product reference images should be proactively requested during the creative brief stage and should not be sought as an afterthought during pre-production.
 
-### 2.1 产品图
+### 2.1 Product Images
 
-**目的**：锁定产品的外观、材质、配色、比例。后续所有产品出镜帧都引用它。
+**Purpose**: Lock in the product's appearance, materials, color scheme, and proportions. All subsequent frames featuring the product reference this image.
 
-**参考图交互**：
-- 产品参考图应已在创意简报阶段（Phase 1）确认，前期筹备阶段不再重复询问产品层面
-- 如果 Phase 1 遗漏（Mode B/C 跳过了创意简报），此处补问"产品有官方图/实物照片/电商图吗？"——默认前提是"有"而非"是否需要"
-- 用户回答后，直接按对应路径生成 prompt，**不索要图片、不等待图片**
+**Reference image interaction**:
+- Product reference images should have been confirmed during the creative brief stage (Phase 1); do not re-ask about the product during the pre-production stage
+- If Phase 1 was skipped (Mode B/C bypassed the creative brief), ask here: "Does the product have official images / physical photos / e-commerce photos?" — the default assumption is "yes," not "does one exist?"
+- After the user responds, generate the prompt according to the appropriate path directly; **do not ask for the image or wait for it to be provided**
 
-**两条 prompt 路径**：
+**Two prompt paths**:
 
-| 路径 | 适用场景 | prompt 写法 | 示例 |
+| Path | When to use | Prompt approach | Example |
 |------|---------|-----------|------|
-| **默认路径（有参考图）** | 已上市产品、已完成设计的产品、有任何官方视觉资产的产品 | `参考图片，为这个产品生成xxx` — 不描述产品外观 | "参考图片，为这个产品生成多视图，白底影棚，统一侧光+轮廓光..." |
-| **例外路径（无参考图）** | 概念产品、虚拟产品、早期设计阶段、用户明确要求纯文字定义产品 | 必须用文字精确描述产品外观（材质、配色、形状、设计特征） | "白底影棚，一瓶方形琥珀色玻璃香水瓶，胡桃木瓶盖，瓶身刻有竖条纹..." |
+| **Default path (reference image available)** | Launched products, completed designs, any product with official visual assets | `Reference the image, generate [X] for this product` — do not describe the product's appearance | "Reference the image, generate a multi-view of this product. White background studio, consistent side light + rim light..." |
+| **Exception path (no reference image)** | Concept products, virtual products, early design stage, user explicitly requests pure text-based product definition | Must precisely describe the product's appearance in text (materials, color scheme, shape, design features) | "White background studio, multi-view of a square amber glass perfume bottle, walnut cap, bottle etched with vertical ribbing..." |
 
-**核心要求**（两条路径共用）：
-- **白底/纯色影棚**，不引入任何环境元素——纯粹锁定产品本身
-- **光影至少双光源**：主光（侧光定型）+ 辅光（轮廓光分离背景）
-- **例外路径额外要求——材质必须精写**：不是"金属外壳"，而是"拉丝纹理钛金属外壳，倒角处可见 CNC 加工的同心圆刀痕"
+**Core requirements** (shared by both paths):
+- **White background / solid-color studio**: no environmental elements — lock in the product itself purely
+- **At least two-light setup**: key light (side light for form definition) + fill light (rim light to separate from background)
+- **Exception path additional requirement — materials must be written precisely**: not "metal casing," but "brushed-texture titanium casing with concentric CNC tooling marks visible at the chamfers"
 
-**做几张？怎么选？**
+**How many images? How to choose?**
 
-| 方案 | 什么时候用 |
+| Option | When to use |
 |------|-----------|
-| **产品多视图（TVC 默认）** | 一张图包含多角度全身 + 关键细节特写。TVC 广告中产品必然多角度出镜，多视图是标准第一资产 |
-| 单张 Hero Shot | 仅当产品只从单一角度出镜（极少见于 TVC） |
-| 额外材质微距 | 分镜中有极致微距镜头时，在多视图基础上追加一张独立微距 |
+| **Product multi-view (TVC default)** | One image containing multi-angle full body + key detail close-ups. In TVC advertising, the product will always appear from multiple angles — multi-view is the standard first asset |
+| Single Hero Shot | Only when the product appears from a single angle (extremely rare in TVC) |
+| Additional material macro | When there is an extreme macro shot in the storyboard, add one additional macro on top of the multi-view |
 
-TVC 广告**默认生成产品多视图**。不要逐张单独出 Hero Shot、侧面图、微距——一张多视图把多角度和关键细节全部锁定，效率最高、一致性最好。
+For TVC advertising, **generate product multi-view by default.** Do not generate individual Hero Shots, side views, or macros separately — one multi-view locks in multiple angles and key details simultaneously, maximizing efficiency and consistency.
 
-**产品多视图提示词模板**：
+**Product multi-view prompt template**:
 
-默认路径（有参考图）：
+Default path (reference image available):
 ```
-参考图片，为这个产品生成多视图。白底影棚，统一侧光+轮廓光。
-包含以下视角：3/4经典角度全身、正面全身、侧面全身、背面全身，
-以及2-3个关键细节微距特写（如瓶盖/按键/材质纹理/接口等产品最具辨识度的局部）。
-保持所有视角的光影方向和色温一致。
-```
-
-例外路径（无参考图）：
-```
-白底影棚，[产品完整外观描述]的多视图。统一侧光+轮廓光。
-包含以下视角：3/4经典角度全身、正面全身、侧面全身、背面全身，
-以及[具体细节部位1]微距特写和[具体细节部位2]微距特写。
-保持所有视角的光影方向和色温一致。
+Reference the image, generate a multi-view of this product. White background studio, consistent side light + rim light.
+Include the following angles: 3/4 classic angle full body, front full body, side full body, back full body,
+and 2–3 key detail macro close-ups (e.g. cap / button / material texture / port — the most distinctive parts of the product).
+Maintain consistent lighting direction and color temperature across all angles.
 ```
 
-### 2.2 角色资产图
+Exception path (no reference image):
+```
+White background studio, multi-view of [complete product appearance description]. Consistent side light + rim light.
+Include the following angles: 3/4 classic angle full body, front full body, side full body, back full body,
+and a macro close-up of [specific detail 1] and a macro close-up of [specific detail 2].
+Maintain consistent lighting direction and color temperature across all angles.
+```
 
-**目的**：锁定人物的体态、服装、配饰、气质（以及面部，如适用）。后续所有该人物出镜帧都引用它。
+### 2.2 Character Asset Images
 
-**三条 prompt 路径**：
+**Purpose**: Lock in the character's body posture, clothing, accessories, and overall aura (and face, if applicable). All subsequent frames featuring that character reference this image.
 
-| 路径 | 触发条件 | prompt 写法 |
+**Three prompt paths**:
+
+| Path | Trigger condition | Prompt approach |
 |------|---------|-----------|
-| **有脸部参考图 + 有产品/服装参考图** | 用户提供了模特照片和产品图 | `(图1)模特参考, (图2)产品/服装参考`，在提示词中引用两张图，不描述人物外貌和产品外观 |
-| **有脸部参考图，无产品参考** | 用户只提供了模特照片 | `参考图片，为图中人物生成xxx`，不描述外貌，但需文字描述服装/造型 |
-| **无参考图** | 用户无任何人物参考 | 必须用文字精确描述外貌+体态+服装+配饰，纯文生图 |
+| **Face reference image + product / clothing reference image available** | User has provided model photos and product images | `(Image 1) model reference, (Image 2) product/clothing reference` — reference both images in the prompt; do not describe the character's appearance or product look |
+| **Face reference image available, no product reference** | User has only provided a model photo | `Reference the image, generate [X] for the person in the image` — do not describe appearance, but describe clothing / styling in text |
+| **No reference image** | User has no character reference at all | Must precisely describe appearance + posture + clothing + accessories in text — pure text-to-image |
 
-**核心要求**（所有路径共用）：
-- **白底，统一光影**：柔和影棚光，所有视角光影方向和色温一致
-- **服装与品牌调性统一**：科技产品配简约都市风，茶饮配自然棉麻风，先锋品牌配暗黑机能风
-- **表情保持中性自然**：具体情绪留到分镜帧再给
-- **无参考图路径额外要求——面部特征锁 2-3 个关键点**：如"鹅蛋脸、杏眼、黑色齐肩直发"——过多细节反而让 AI 难以保持一致
-- **无参考图路径的人物描述层次**：`[身份] + [体态] + [面部特征] + [服装完整描述] + [配饰] + [气质]`
+**Core requirements** (shared by all paths):
+- **White background, consistent lighting**: soft studio light, consistent lighting direction and color temperature across all angles
+- **Clothing aligned with brand tone**: tech products pair with minimal urban style, tea beverages pair with natural linen style, avant-garde brands pair with dark tactical style
+- **Expression stays neutral and natural**: specific emotions are added at the storyboard frame stage
+- **No-reference path additional requirement — lock 2–3 key facial features**: e.g. "oval face, almond eyes, black chin-length straight hair" — too many details actually make it harder for AI to maintain consistency
+- **No-reference path character description hierarchy**: `[Identity] + [Body type] + [Facial features] + [Complete clothing description] + [Accessories] + [Aura]`
 
-**资产图永远是全身**：
+**Character asset images are always full body**:
 
-角色资产图 = 选角定妆照。真正的 TVC 导演选角时永远看完整的人——镜头只拍腿/手/背影是拍摄时的决策，不是选角时的决策。服装是一个整体造型系统（上装+下装+鞋+配饰互相呼应），只拍半身会丢失造型的完整语境。
+A character asset image = a casting & wardrobe reference. A real TVC director always looks at the complete person when casting — the decision to shoot only legs / hands / back is made during production, not during casting. Clothing is a complete styling system (top + bottom + shoes + accessories all in dialogue with each other); shooting only half the body loses the full context of the look.
 
-| 面部是否出镜 | 资产图格式 | 说明 |
+| Is the face on screen | Asset image format | Notes |
 |------------|----------|------|
-| **含面部** | **完整三视图**：面部特写 + 全身正面 + 全身背面 | 标准格式 |
-| **无面部/遮挡面部** | **造型展示图**：全身正面 + 全身侧面 + 全身背面 + 关键配饰特写 | 面部可遮挡/下半脸/侧颜，重点锁定服装和配饰完整造型 |
-| 仅 1-2 格远景剪影/背影 | **不做资产图**，用出镜者标准描述代替 | 见 Part 3 角色一致性 |
+| **Face included** | **Complete character turnaround**: face close-up + full body front + full body back | Standard format |
+| **No face / face obscured** | **Styling showcase**: full body front + full body side + full body back + key accessory close-up | Face may be obscured / lower half of face / profile; focus is on locking in complete clothing and accessory look |
+| Only 1–2 frames of wide-shot silhouette / back view | **No asset image** — use on-screen talent standard description instead | See Part 3 Character Consistency |
 
-> **禁止生成半身/局部角色资产图。** 即使分镜中只有下半身或手部出镜，资产图也必须是全身——造型的整体性决定了每个局部的视觉逻辑。
+> **Generating half-body or partial character asset images is prohibited.** Even if only the lower body or hands appear in the storyboard, the asset image must be full body — the integrity of the styling determines the visual logic of every individual part.
 
-**穿戴产品的角色资产必须引用产品图**：
+**Character assets featuring the product must reference the product image**:
 
-当产品穿在身上/戴在手上/拿在手里时（跑鞋、手表、首饰、外套、眼镜、手袋等），角色资产图提示词**必须引用前期已生成的产品多视图**，让角色穿着/佩戴产品出镜。写法：在 Nano Banana Pro 的 edit 模式下上传产品多视图，提示词中用 `(图N)` 引用——`穿着图1的跑鞋` / `手腕佩戴图1的手表` / `身穿图1的外套`。不引用产品图 = 角色脚上/手上/身上的产品外观不可控 = 后续分镜一致性崩塌。
+When the product is worn / on the wrist / held in hand (running shoes, watch, jewelry, jacket, glasses, handbag, etc.), the character asset image prompt **must reference the product multi-view already generated in pre-production**, so the character is shown wearing / holding the product. Method: in Nano Banana Pro's edit mode, upload the product multi-view, then reference it in the prompt using `(ImageN)` — `wearing the running shoes from Image 1` / `wrist wearing the watch from Image 1` / `wearing the jacket from Image 1`. Not referencing the product image = the product appearance on the character's feet / wrist / body is uncontrolled = storyboard consistency collapses downstream.
 
-#### 角色资产图提示词示例
+#### Character Asset Image Prompt Examples
 
-**示例 1：纯文字生成（无参考图，含面部）——古风汉服模特**
-
-```
-一张高品质的影棚写真三视图，包含人物脸部特写，正面全身，背面全身。
-一位美丽的年轻女子身着精致的淡香槟金与豆沙色调的唐风汉服，全身像站立。
-汉服面料为细腻的丝绸质感，点缀着柔和的浅蓝、粉色花卉刺绣以及古典的暗纹。
-腰间系着一条带有精致青玉带扣的青绿色腰带。她梳着端庄的云髻，
-饰以简约而华丽的花卉发饰、珍珠耳坠和流苏步摇。
-她的双手端庄地叠放在腰前，广袖自然垂落，呈现出优雅大方的姿态。
-人物直视镜头，眼神清澈，表情从容。
-纯白背景，柔和的影棚光影，8k分辨率，超逼真的写实主义，极其细腻的布料纹理。
-```
-
-**示例 2：有脸部参考图 + 有服装参考图——时尚穿搭多格展示**
+**Example 1: Pure text generation (no reference image, face included) — traditional Chinese hanfu model**
 
 ```
-大师级作品，8K超高清，写实照片，16:9横版构图，4格时尚展示排版，
-第一格：图1女性的特写肖像，穿着图2的豹纹连衣裙，白色干净背景，柔和影棚灯光，
-第二格：同一女性的全身正面照，穿着图2的修身长袖V领豹纹迷你裙，
-手拿图2的黑色小手提包，裸色尖头高跟鞋，自然站立，白色影棚背景，
-第三格：同一女性的全身侧面照，同款穿搭、包包、鞋子，自然站立，白色背景，
-第四格：同一女性的全身背面照，同款穿搭、包包、鞋子，自然站立，白色背景，
-五官完全一致，发型一致（长波浪深棕发），配饰一致（细银项链、小耳钉、银手镯、戒指），
-肤色一致，专业时尚画册风格，光线统一，对焦清晰，无变形，无模糊
+A high-quality studio portrait character turnaround, including a face close-up, full body front, and full body back.
+A beautiful young woman wearing an exquisite Tang-style hanfu in soft champagne gold and dusty rose tones, standing in full-length pose.
+The hanfu fabric has a delicate silk texture, embellished with soft blue and pink floral embroidery and classical damask patterns.
+A teal sash with an intricate jade-green clasp is tied at the waist. Her hair is styled in an elegant cloud chignon,
+adorned with simple yet ornate floral hairpieces, pearl eardrops, and swaying tassel hairpins.
+Her hands are folded gracefully at her waist, wide sleeves falling naturally, conveying an elegant and poised bearing.
+The character looks directly into the camera, eyes clear, expression composed.
+Pure white background, soft studio lighting, 8K resolution, hyper-realistic, extremely fine fabric texture.
 ```
 
-> 示例 2 的关键写法：用 `(图1)` 锁定脸部/体态，用 `(图2)` 锁定服装/配饰外观，提示词只描述穿搭组合方式和展示角度——外观细节交给参考图。每格用"同一女性""同款穿搭"强化一致性。
-
-**示例 3：无面部 + 引用产品图——跑鞋 TVC 模特造型展示图**
+**Example 2: Face reference image + clothing reference image — fashion styling multi-panel showcase**
 
 ```
-大师级作品，8K超高清，写实照片，16:9横版构图，4格运动造型展示排版，
-第一格：一位美丽的、身材纤细的年轻亚洲女性的全身正面照，黑色高马尾，
-身穿黑色高腰修身九分跑步紧身裤（哑光压缩面料，裤脚贴合脚踝上方），
-浅灰色短款修身速干上衣，脚穿图1的白色跑鞋，极短隐形袜露出纤细脚踝，
-自然站立双手放松垂于身侧，面部微微低头仅露下巴线条，
-白色干净背景，柔和影棚灯光，
-第二格：同一女性的全身侧面照，同款穿搭，脚穿图1的白色跑鞋，
-自然站立，展示跑裤侧线剪裁和图1跑鞋侧面完整轮廓，白色背景，
-第三格：同一女性的全身背面照，同款穿搭，脚穿图1的白色跑鞋，
-自然站立，展示上衣后背线条和跑裤臀线剪裁，白色背景，
-第四格：同一女性的脚踝与跑鞋特写，图1的白色跑鞋与纤细脚踝的比例关系，
-鞋面编织纹理清晰可见，裤脚收口与鞋口之间露出一截肌肤，
-体态完全一致，服装完全一致，发型一致（黑色高马尾），肤色一致，
-专业运动画册风格，光线统一，对焦清晰，无变形，无模糊
+Masterwork, 8K ultra-HD, photorealistic, 16:9 landscape composition, 4-panel fashion display layout,
+Panel 1: A close-up portrait of the woman from Image 1, wearing the leopard print dress from Image 2, clean white background, soft studio lighting,
+Panel 2: Full body front of the same woman, wearing the fitted long-sleeve V-neck leopard mini dress from Image 2,
+holding the black mini handbag from Image 2, nude pointed-toe heels, standing naturally, white studio background,
+Panel 3: Full body side of the same woman, same outfit, same bag, same shoes, standing naturally, white background,
+Panel 4: Full body back of the same woman, same outfit, same bag, same shoes, standing naturally, white background,
+Facial features fully consistent, hairstyle consistent (long wavy dark brown hair), accessories consistent (delicate silver necklace, small earrings, silver bracelet, rings),
+skin tone consistent, professional fashion editorial style, uniform lighting, sharp focus, no distortion, no blur
 ```
 
-> 示例 3 的关键写法：**每格都重复写 `脚穿图1的白色跑鞋` 或 `图1的白色跑鞋`**——产品引用只写一次容易被 AI 忽略，每格重复才能确保每个视角都穿着产品。格式参考示例 2 的"同一女性""同款穿搭"写法强化一致性。面部通过低头规避正脸但保留发型信息。
+> Key approach in Example 2: Use `(Image 1)` to lock the face / body type, use `(Image 2)` to lock the clothing / accessories appearance. The prompt only describes how the look is combined and what angles to show — visual details are handled by the reference images. Reinforce consistency in each panel with "the same woman" and "same outfit."
 
-**产品引用铁律**：当角色穿戴产品时，提示词中**每格都必须重复产品引用**（`脚穿图1的xxx` / `手腕佩戴图1的xxx`），不可只在开头提一次。单次提及的权重不足以让 AI 在所有视角中都正确渲染产品。
+**Example 3: No face + product reference image — running shoe TVC model styling showcase**
 
-### 2.3 场景图
+```
+Masterwork, 8K ultra-HD, photorealistic, 16:9 landscape composition, 4-panel athletic styling display layout,
+Panel 1: Full body front of a beautiful, slender young Asian woman, black high ponytail,
+wearing black high-waist fitted 7/8-length running tights (matte compression fabric, cuffs fitted just above the ankle),
+light grey short fitted quick-dry top, feet in the white running shoes from Image 1, ultra-short invisible socks revealing slender ankles,
+standing naturally with arms relaxed at sides, face tilted slightly downward showing only the jawline,
+clean white background, soft studio lighting,
+Panel 2: Full body side of the same woman, same outfit, feet in the white running shoes from Image 1,
+standing naturally, showcasing the side seam cut of the running tights and the complete side profile of the Image 1 running shoes, white background,
+Panel 3: Full body back of the same woman, same outfit, feet in the white running shoes from Image 1,
+standing naturally, showcasing the back panel lines of the top and the seat-seam cut of the running tights, white background,
+Panel 4: Close-up of the same woman's ankles and running shoes, the proportion relationship between the Image 1 white running shoes and slender ankles,
+the woven texture of the upper is clearly visible, a strip of skin showing between the pant cuff and the shoe collar,
+posture fully consistent, clothing fully consistent, hairstyle consistent (black high ponytail), skin tone consistent,
+professional athletic editorial style, uniform lighting, sharp focus, no distortion, no blur
+```
 
-**目的**：锁定品牌世界的视觉氛围——空间、光影、色调、时间。后续该场景中的所有帧都延续这个视觉基调。
+> Key approach in Example 3: **Each panel repeats `feet in the white running shoes from Image 1` or `the Image 1 white running shoes`** — mentioning the product reference only once makes it easy for AI to ignore; repeating in each panel ensures the product is rendered correctly in every angle. Follow the "same woman" and "same outfit" approach from Example 2 to reinforce consistency. The face is avoided by tilting the head down, but hair information is preserved.
 
-**两条 prompt 路径**：
+**Product reference iron rule**: When a character wears or carries the product, **the product reference must be repeated in every panel of the prompt** (`feet in the [X] from Image 1` / `wrist wearing the [X] from Image 1`) — it cannot be mentioned only once at the start. A single mention does not carry enough weight for AI to correctly render the product in all angles.
 
-| 路径 | prompt 写法 | 示例 |
+### 2.3 Scene Images
+
+**Purpose**: Lock in the visual atmosphere of the brand world — space, lighting, color palette, and time of day. All subsequent frames set in that location carry forward this visual key.
+
+**Two prompt paths**:
+
+| Path | Prompt approach | Example |
 |------|-----------|------|
-| **有参考图** | `参考图片，基于图中场景氛围生成xxx` — 不描述场景细节 | "参考图片，基于图中场景氛围生成 16:9 宽幅空镜，无人物无产品，保持相同色调和光影基调" |
-| **无参考图** | 必须用文字精确描述空间、色调、光影、时间 | "16:9 宽幅，北欧极简公寓客厅清晨，落地窗洒入金色晨光，白墙灰地板..." |
+| **Reference image available** | `Reference the image, generate [X] based on the scene atmosphere in the image` — do not describe scene details | "Reference the image, generate a 16:9 wide empty establishing shot based on the scene atmosphere in the image, no people no product, maintain the same color palette and lighting key" |
+| **No reference image** | Must precisely describe the space, color palette, lighting, and time of day in text | "16:9 wide, Nordic minimalist apartment living room at dawn, golden morning light pouring through floor-to-ceiling windows, white walls grey floors..." |
 
-**核心要求**（两条路径共用）：
-- **无人物、无产品**：场景图只锁定"空间本身"，人和产品在分镜帧中再加入
-- **时间和天气必须明确**：同一个茶园，清晨薄雾和正午烈日是完全不同的两张图
-- **色调是核心交付**：场景图最重要的产出是"色调基准"
-- **前中远景分层**：场景必须有空间纵深感
-- **宽幅 16:9**
+**Core requirements** (shared by both paths):
+- **No people, no product**: scene images lock in "the space itself" — people and product are added in storyboard frames
+- **Time of day and weather must be explicit**: the same tea garden at dawn with thin mist and at noon under harsh sun are completely different images
+- **Color palette is the core deliverable**: the most important output of a scene image is the "color palette baseline"
+- **Foreground / midground / background layering**: scenes must have spatial depth
+- **Wide 16:9**
 
-**做几张？**
-- 分镜中每一个**视觉上明显不同的空间**做一张
-- 同一空间的不同角落不需要分开做
+**How many images?**
+- One image for each **visually distinct space** in the storyboard
+- Different corners of the same space do not need to be done separately
 
 ---
 
-## Part 3: 一致性——资产图的核心价值
+## Part 3: Consistency — The Core Value of Asset Images
 
-> 资产图的价值不是"好看"，而是"可引用"。后续分镜帧通过引用资产图来确保全片视觉一致。
+> The value of asset images is not "looking good" but "being referenceable." Subsequent storyboard frames reference asset images to ensure visual consistency throughout the film.
 
-### 产品一致性
+### Product Consistency
 
-基于产品图建立一段**产品标准描述**，所有后续帧的提示词统一复用：
+Based on the product image, establish a **product standard description** to be reused uniformly in all subsequent frame prompts:
 
 ```
-[产品名]，[核心材质] + [配色]，[关键设计特征1]，[关键设计特征2]。
+[Product name], [core material] + [color scheme], [key design feature 1], [key design feature 2].
 ```
 
-### 角色一致性
+### Character Consistency
 
-- **有资产图**：后续帧用参考图引用（`图中[角色名]` 或 `(图N)`），不重复描述外貌
-- **无资产图（剪影/远景等不做资产的情况）**：建立一段**人物标准描述**，所有后续帧统一复用：
-  `[肤色/人种] + [体态] + [服装款式+颜色] + [关键配饰]`
-  示例："亚洲男性，精瘦跑者体型，黑色紧身九分跑裤，深灰速干背心，无配饰"
-- 服装/发型/体型描述保持不变，只有表情和姿态可以变化
+- **Asset image available**: subsequent frames use reference image (`the [character name] in the image` or `(ImageN)`) — do not re-describe appearance
+- **No asset image (silhouette / wide shot where no asset is made)**: establish an **on-screen talent standard description** to be reused uniformly in all subsequent frames:
+  `[Skin tone / ethnicity] + [body type] + [clothing style + color] + [key accessories]`
+  Example: "Asian male, lean runner's build, black fitted 7/8-length running tights, dark grey quick-dry tank top, no accessories"
+- Clothing / hairstyle / body type description remains unchanged; only expression and pose may vary
 
-### 场景一致性
+### Scene Consistency
 
-- 同一场景的不同镜头，色调、光线方向、大气效果保持一致
-- 场景图的色调是"基准色"，后续帧可以微调但不跳变
+- Across different shots in the same scene, color palette, light direction, and atmospheric effects remain consistent
+- The scene image's color palette is the "baseline" — subsequent frames may fine-tune but must not jump to a different palette
 
-### 跨资产协调
+### Cross-Asset Coordination
 
-- 产品色调和场景色调要协调——暖场景配暖产品光影
-- 人物服装色与品牌色/场景色有呼应
-- 所有资产统一使用同一画风方向
+- Product color palette and scene color palette should coordinate — warm scenes pair with warm product lighting
+- Character clothing color echoes the brand color / scene color
+- All assets use the same unified visual style direction

@@ -1,175 +1,175 @@
-# TVC 创意策略与分镜脚本框架
+# TVC Creative Strategy & Storyboard Script Framework
 
-> **核心使命**：提供 TVC 导演的思维框架，指导大模型从产品 Brief 提取灵感，推导视觉创意，并最终输出标准、可执行的【分镜头脚本】。
-> **拒绝废话**：放弃僵化的百分比模版和理论穷举，建立“世界观设定 -> 视听转化 -> 分镜输出”的直觉思维。
+> **Core Mission**: Provide a mental framework for TVC directors, guiding the model to extract inspiration from a product Brief, derive visual concepts, and ultimately produce a standardized, executable [storyboard script].
+> **No Filler**: Abandon rigid percentage templates and exhaustive theory. Build an intuitive pipeline of "world-building → Visual Translation → storyboard output."
 
 ---
 
-## Part 1: TVC 导演的思维框架 (Mental Model)
+## Part 1: TVC Director's Mental Model
 
-优秀的 TVC 创意不是填表格，而是构建世界和控制节奏。在构思阶段，请始终围绕以下三个维度进行推演：
+Great TVC creative work is not about filling out forms — it is about building worlds and controlling rhythm. During the ideation phase, always reason across these three dimensions:
 
-### 1. 双世界法则 (Dual Worlds)
-不要让产品干瘪地存在于真空中，思考它在这两个世界中的存在方式：
-*   **产品世界 (Product World)**：绝对的主场。强调微距、精密感、材质肌理、局部特写、光影流转。
-*   **品牌世界 (Brand World)**：产品所处的情感与文化语境。品牌世界的**载体**因品类而异——见下方品类分支。
-*   **交互枢纽 (Match Cut/Transition)**：如何通过形状匹配、动作连贯或色彩渐变，将这两个世界的镜头无缝衔接。
+### 1. Dual Worlds Rule (Dual Worlds)
+Do not let the product exist in a vacuum. Think about how it exists in each of these two worlds:
+*   **Product World**: Its absolute home turf. Emphasize macro shots, precision, material texture, close-up details, and the play of light and shadow.
+*   **Brand World**: The emotional and cultural context the product inhabits. The **vehicle** of the Brand World varies by category — see the category branches below.
+*   **Match Cut / Transition Hub**: How to seamlessly connect shots from both worlds through shape matching, continuous motion, or color gradients.
 
-#### 品牌世界的三种品类路径
+#### Three Category Paths for the Brand World
 
-不同产品品类的品牌世界由不同的载体承载。**拿到 brief 后，先判断产品属于哪条路径，再构思品牌世界**：
+Different product categories carry their Brand World through different vehicles. **After receiving a Brief, first determine which path the product belongs to, then build the Brand World:**
 
-**功能型品牌世界**（科技/工具/户外装备）
-载体是**环境**。产品在极限/专业使用场景中出场，环境本身传递品牌价值。
-*   运动相机 → 跳伞、潜水、滑雪、攀岩
-*   专业工具 → 工地、实验室、手术室
-*   产品世界的表达：零件拆解、功能激活、屏幕点亮、数据可视化
+**Functional Brand World** (tech / tools / outdoor gear)
+The vehicle is **environment**. The product appears in extreme or professional use scenarios, and the environment itself communicates brand value.
+*   Action cameras → skydiving, diving, skiing, rock climbing
+*   Professional tools → construction sites, laboratories, operating rooms
+*   Product World expression: component breakdown, function activation, screen powering on, data visualization
 
-**身份型品牌世界**（时尚/珠宝/奢侈品/潮牌）
-载体是**人**。人的气质、穿搭、姿态、生活态度就是品牌世界——环境退居背景。
-*   先锋银饰 → 穿极简黑衣的人 + 建筑美学空间 + 独立态度
-*   奢侈珠宝 → 高定礼服 + 仪式感 + 优雅姿态
-*   街头潮牌 → 涂鸦/地下文化 + 不羁年轻人
-*   产品世界的表达：工艺溯源（锻造/打磨/镶嵌）、佩戴流转（光影在弧面上流动）、肌肤与材质的触感对比
+**Identity Brand World** (fashion / jewelry / luxury / streetwear)
+The vehicle is **people**. A person's temperament, outfit, posture, and attitude toward life are the Brand World — the environment recedes into background.
+*   Avant-garde silver jewelry → a person in minimalist black + architectural aesthetic space + independent attitude
+*   Luxury jewelry → haute couture + ritualistic feel + elegant posture
+*   Street / hype brands → graffiti / underground culture + rebellious youth
+*   Product World expression: craft origins (forging / polishing / setting), wear in motion (light flowing across curved surfaces), tactile contrast between skin and material
 
-**感官型品牌世界**（食饮/护肤/香氛）
-载体是**感官体验**。原料质感、制作仪式、使用瞬间的感官细节就是品牌世界。
-*   精品咖啡 → 烘焙过程、萃取瞬间、蒸汽升腾
-*   护肤品 → 晨光仪式、水珠在肌肤上滑落、质地微距
-*   香氛 → 原料意象（玫瑰花瓣、木质纹理、海盐结晶）
-*   产品世界的表达：原料溯源、制作过程可视化、倾倒/涂抹/品尝的感官瞬间
+**Sensory Brand World** (food & beverage / skincare / fragrance)
+The vehicle is **sensory experience**. The texture of raw ingredients, the ritual of preparation, and the sensory details of the moment of use are the Brand World.
+*   Specialty coffee → the roasting process, the extraction moment, steam rising
+*   Skincare → a morning-light ritual, water droplets sliding across skin, texture in macro
+*   Fragrance → raw material imagery (rose petals, wood grain, sea salt crystals)
+*   Product World expression: tracing ingredient origins, visualizing the production process, the sensory instant of pouring / applying / tasting
 
-### 2. 产品植入策略 (Product Integration)
+### 2. Product Integration Strategy (Product Integration)
 
-双世界法则定义了"产品世界"和"品牌世界"的存在，但没有回答一个关键问题：**这两个世界在片子里怎么共处？** 拿到 brief 后，先判断品类路径，然后选择植入策略——它决定了全片的结构骨架。
+The Dual Worlds Rule defines the existence of the "Product World" and the "Brand World," but does not answer a critical question: **how do these two worlds coexist within the film?** After receiving a Brief, first determine the category path, then select an integration strategy — it dictates the structural backbone of the entire piece.
 
-#### 产品电影化拆解
+#### Cinematic Product Breakdown
 
-产品是唯一主角，纯影棚，全片就是产品世界。零件悬浮拆解、材质微距潜入、光影剧场——品牌世界可以完全不出现。
+The product is the sole protagonist, pure studio, and the entire film is the Product World. Floating component disassembly, macro material immersion, a theater of light and shadow — the Brand World may not appear at all.
 
-*   适合有内部结构可展示的产品：耳机、相机、手机、机械表芯
-*   视觉逻辑：暗调揭示 → 悬浮拆解 → 功能激活 → 微距潜入 → 品牌定格
-*   产品世界占比 100%
+*   Suited for products with internal structure worth showcasing: earphones, cameras, phones, mechanical watch movements
+*   Visual logic: dark reveal → floating disassembly → function activation → macro immersion → brand freeze frame
+*   Product World proportion: 100%
 
-#### 品牌世界穿梭
+#### Brand World Crosscut
 
-品牌世界和产品世界**轮流出场**，用 Match Cut 衔接。一个 Phase 待在一个世界里把场景讲完，然后通过匹配剪辑切到另一个世界——不是在一个 Phase 内部来回跳。
+The Brand World and the Product World **alternate appearances**, linked by Match Cuts. One Phase stays in one world and tells its scene to completion, then cuts to the other world via a match edit — there is no back-and-forth jumping within a single Phase.
 
-*   适合产品功能与极限/专业场景强绑定的品类：运动相机+跳伞、潜水表+深海、越野车+山路
-*   视觉逻辑：品牌世界建立能量 → Match Cut 到产品世界展示 → Match Cut 回品牌世界升级 → 产品世界收束
-*   关键：切换发生在 Phase 之间，每个 Phase 是一个完整的连贯镜头
+*   Suited for categories where product function is strongly tied to extreme or professional scenarios: action camera + skydiving, dive watch + deep sea, off-road vehicle + mountain roads
+*   Visual logic: Brand World builds energy → Match Cut to Product World showcase → Match Cut back to Brand World escalation → Product World closes
+*   Key: transitions happen between Phases; each Phase is a single, coherent continuous shot
 
-#### 生活方式短片（Lifestyle Film）
+#### Lifestyle Film
 
-产品始终待在品牌世界中，不跳出去。不做影棚特写，不做拆解——产品就穿在身上、戴在手上、握在手里。通过运镜手法（低角度追拍、慢动作、景深变化、追焦到产品）在场景内自然突出产品存在感。片尾集中做一个 Hero Shot 收束。
+The product remains entirely within the Brand World and never steps out. No studio close-ups, no disassembly — the product is simply worn, on the wrist, or held in the hand. Camera techniques (low-angle tracking, slow motion, depth-of-field shifts, follow focus on the product) naturally highlight the product's presence within the scene. A Hero Shot at the end closes the piece.
 
-*   适合穿戴型产品和生活方式产品：跑鞋、手表、眼镜、首饰佩戴状态、手袋
-*   视觉逻辑：品牌世界叙事为主，产品通过运镜被"看见"而不是被"展示" → 片尾 Hero Shot 定格
-*   产品始终在画面中（穿在身上），但镜头不刻意脱离场景去做影棚特写
+*   Suited for wearable and lifestyle products: running shoes, watches, glasses, jewelry in a worn state, handbags
+*   Visual logic: Brand World narrative is primary; the product is "seen" through camera work rather than "displayed" → Hero Shot freeze frame at the end
+*   The product is always in frame (worn on the body), but the camera does not deliberately break from the scene to do a studio close-up
 
-#### 品类直觉
+#### Category Intuition
 
-不是硬规则，是默认倾向——导演可以打破，但打破要有理由：
+Not a hard rule, but a default tendency — a director may break it, but breaking it requires a reason:
 
-*   有内部结构可拆的科技产品 → 电影化拆解
-*   产品功能绑定极限/专业场景 → 品牌世界穿梭
-*   穿戴型 / 生活方式 → 生活方式短片
+*   Tech products with internal structure worth disassembling → Cinematic Product Breakdown
+*   Product function tied to extreme / professional scenarios → Brand World Crosscut
+*   Wearable / lifestyle → Lifestyle Film
 
-### 3. 出镜策略 (Casting Strategy)
+### 3. Casting Strategy (Casting Strategy)
 
-创意提案阶段必须回答：**谁出镜、怎么出镜、穿什么**。这对应真实 TVC 制作中的选角 (Casting) 和造型 (Styling) 环节。
+During the creative pitch phase, this question must be answered: **who appears on screen, how do they appear, and what do they wear**. This corresponds to the Casting and Styling stages of actual TVC production.
 
-#### 出镜决策树
+#### Casting Decision Tree
 
 ```
-产品品类 → 是否需要人物出镜？
+Product category → Is a human subject needed on screen?
 │
-├── 身份型（珠宝/时尚/奢侈品）→ 默认需要人物
-│   ├── 产品佩戴在身体上 → 手部/手腕/颈部/耳部特写是 hero shot
-│   ├── 服装/鞋履 → 穿着状态的身体是 hero shot
-│   └── 造型方向：服装风格、配饰、肤质、气质关键词
+├── Identity type (jewelry / fashion / luxury) → Default: yes
+│   ├── Product worn on the body → hands / wrists / neck / ears close-up is the hero shot
+│   ├── Apparel / footwear → the clothed body is the hero shot
+│   └── Styling Direction: clothing style, accessories, skin tone, temperament keywords
 │
-├── 功能型（科技/工具/户外）→ 人物可选
-│   ├── 纯产品电影化拆解 → 可无人
-│   ├── 品牌世界穿梭 → 人物在使用场景中出现
-│   └── 造型方向：功能性服装（运动装备、工服等）
+├── Functional type (tech / tools / outdoors) → Human subject optional
+│   ├── Pure Cinematic Product Breakdown → no person required
+│   ├── Brand World Crosscut → person appears in the use scenario
+│   └── Styling Direction: functional clothing (athletic gear, workwear, etc.)
 │
-└── 感官型（食饮/护肤/香氛）→ 视创意方向而定
-    ├── 使用仪式 → 手部/面部局部
-    ├── 原料溯源 → 可无人
-    └── 造型方向：自然、生活感
+└── Sensory type (food & bev / skincare / fragrance) → Depends on creative direction
+    ├── Use ritual → hands / face partial shot
+    ├── Ingredient origin tracing → no person required
+    └── Styling Direction: natural, everyday feel
 ```
 
-#### Seedance 多宫格人物约束
+#### Seedance Multi-Grid Character Constraints
 
-Seedance 多宫格（3x3 分镜）**不支持完整人脸**。人物出镜方式限于：
-*   手部 / 手腕特写（珠宝/手表最常用）
-*   下半脸（嘴唇、下颌线）
-*   身体局部特写（肩颈、锁骨、腰线）
-*   全身远景 / 背影 / 剪影
-*   戴口罩 / 潜水面具 / 头盔等遮挡面部的方式
+Seedance multi-grid (3x3 storyboard Grid) **does not support full faces**. On-screen appearances are limited to:
+*   Hands / wrist close-ups (most common for jewelry / watches)
+*   Lower face (lips, jawline)
+*   Body partial close-ups (shoulders and neck, collarbone, waistline)
+*   Full-body long shot / back view / silhouette
+*   Face-obscuring methods: mask / diving mask / helmet, etc.
 
-**Nano Banana Pro 资产图不受此限制**——角色三视图可包含完整人脸，用于锁定人物设定。限制仅在多宫格分镜阶段生效。
+**Nano Banana Pro asset images are not subject to this constraint** — three-view character sheets may include complete faces, used to lock in character design. The constraint applies only during the multi-grid storyboard Phase.
 
-#### 造型方向
+#### Styling Direction
 
-造型是身份型品牌世界的核心载体。创意提案中的造型方向应包含：
-*   **服装风格**：极简/高定/街头/工装/运动...
-*   **色彩关系**：与产品色的呼应或对比（银饰 + 全黑 = 先锋；金饰 + 裸色 = 优雅）
-*   **配饰逻辑**：除主推产品外是否有其他配饰？保持克制，不抢主角
-*   **肤质/妆发方向**：干净/自然/戏剧化/无妆感...
+Styling is the core vehicle of the Identity Brand World. The Styling Direction in a creative pitch should include:
+*   **Clothing style**: minimalist / haute couture / streetwear / workwear / athletic ...
+*   **Color relationship**: harmony or contrast with the product's color (silver jewelry + all black = avant-garde; gold jewelry + nude tones = elegant)
+*   **Accessory logic**: are there accessories beyond the hero product? Keep it restrained — do not compete with the star
+*   **Skin / hair / makeup direction**: clean / natural / dramatic / no-makeup look ...
 
-### 4. 视听转化法则 (Visual Translation)
-将抽象的“卖点”转化为具象的视听语言：
-*   **色彩与光影**：主色调是什么？是冷峻的赛博朋克霓虹光，还是治愈的自然晨光（Window light）？品牌色如何自然植入？
-*   **视觉隐喻**：用画面代替说教。例如，“新鲜”不靠字幕，靠“清晨嫩芽滴落的露珠”；“静音”靠“一根针掉落的涟漪”。
-*   **环境音场**：设计画面时同步思考声音。风声、水声、机械声、白噪音，甚至绝对的“静音”。
+### 4. Visual Translation Rules (Visual Translation)
+Transform abstract "selling points" into concrete audiovisual language:
+*   **Color and light**: What is the Primary color palette? Is it the cold, sharp neon glow of cyberpunk, or the healing natural morning light (window light)? How does the brand color integrate naturally?
+*   **Visual metaphor**: Let images speak instead of lecturing. For example, "freshness" is not a subtitle — it is "morning dew dripping from a young bud at dawn." "Silent" is "ripples from a single falling pin."
+*   **Ambient soundscape**: Think about sound in sync while designing the image. Wind, water, mechanical sounds, white noise — even absolute silence.
 
-### 5. 叙事切分 (Pacing)
-将总时长划分为合乎逻辑的节拍幕次（通常以 15 秒为一个叙事单元）：
-*   **0-15s (起 - Hook)**：建立世界观与情绪基调，抓住眼球。
-*   **15-30s (承 - Develop)**：场景展开，产品核心特征、氛围或冲突显现。
-*   **30-45s (转 - Climax)**：视听高潮，最快节奏的快剪或最具视觉张力的特写。
-*   **45-60s (合 - Resolution)**：情绪落地，产品 Hero Shot 亮相，品牌理念收束。
-
----
-
-## Part 2: 创意方向竞选 (Concept Pitch)
-
-在正式写脚本前，先提供 2-3 个核心创意方向供用户选择。保持精简，直击灵魂。
-
-**输出格式**：
-*   **方向 X：[极具画面感的概念名称]**
-*   **视觉风格与主色调**：[如：日系清新 / 东方自然美学 / 暖绿色调]
-*   **核心视听思路**：[简述产品世界与品牌世界如何交织，3-4句话说清全片最大的视觉亮点与记忆点]
+### 5. Narrative Pacing (Pacing)
+Divide the total runtime into logically sequenced beat acts (typically 15 seconds as one narrative unit):
+*   **0–15s (Act 1 – Hook)**: Establish the world and emotional tone. Capture attention immediately.
+*   **15–30s (Act 2 – Develop)**: The scene unfolds; the product's core characteristics, atmosphere, or conflict emerge.
+*   **30–45s (Act 3 – Climax)**: Audiovisual peak — the fastest-paced quick cuts or the most visually charged close-ups.
+*   **45–60s (Act 4 – Resolution)**: Emotions land, the product Hero Shot appears, and the brand idea closes.
 
 ---
 
-## Part 3: 标准化分镜头脚本产出 (Storyboard Script)
+## Part 2: Concept Pitch (Concept Pitch)
 
-用户选定方向后，直接输出分镜头脚本。这是本阶段的**最终核心交付物**。必须使用以下标准格式：
+Before writing the script, present 2–3 core creative directions for the user to choose from. Keep it lean and cut straight to the soul.
 
-### 脚本结构标准
+**Output format**:
+*   **Direction X: [A highly cinematic concept name]**
+*   **Visual style and Primary color palette**: [e.g.: Japanese fresh / Eastern natural aesthetics / warm green palette]
+*   **Core visual/audio concept**: [Briefly describe how the Product World and Brand World interweave — 3–4 sentences capturing the film's biggest visual highlight and most memorable element]
 
-**【全局设定】**
-*   **视频总时长**：[如：约 60 秒]
-*   **视觉风格**：[关键词概括，如：高级电影感 / 赛博科技风]
-*   **主色调**：[色彩描述，如：春日新绿、透明水光与晨光]
-*   **音乐/声音基调**：[如：轻柔钢琴起头，中段加入风铃声，结尾回归白噪音]
+---
 
-**【分幕剧本】**（按时长分块，通常每 15 秒一幕）
+## Part 3: Standardized Storyboard Script Output (Storyboard Script)
 
-#### ⏱️ 第一幕：[幕标题] (00:00 - 00:15)
+Once the user selects a direction, output the storyboard script directly. This is the **ultimate core deliverable** of this phase. The following standard format must be used:
 
-**【镜头 1】**
-*   **画面描述**：[详细的画面内容，前中后景，人物动作，产品状态，必须包含具体的画面细节。如果是一组快剪蒙太奇，可在此列出连续的多个短镜头。]
-*   **运镜方式**：[如：固定机位 / 缓慢推进 / 航拍跟随 / 动感快切 / POV过肩视角 / 环绕镜头]
-*   **旁白文案/字幕**：[精炼的文案，如果没有则写“无”]
-*   **声音设计**：[具体的环境音或动作音效，如"微风吹拂"、"掐叶声"、"打字沙沙声"]
+### Script Structure Standard
 
-**【镜头 2】**
+**[Global Setup]**
+*   **Total video duration**: [e.g.: approx. 60 seconds]
+*   **Visual style**: [keyword summary, e.g.: high-end cinematic feel / cyberpunk tech aesthetic]
+*   **Primary color palette**: [color description, e.g.: spring fresh green, transparent water light and morning glow]
+*   **Music/sound tone**: [e.g.: gentle piano opens, wind chimes introduced mid-section, white noise returns at the end]
+
+**[Scene Script]** (divided into blocks by duration, typically one act per 15 seconds)
+
+#### ⏱️ Act One: [Act Title] (00:00 – 00:15)
+
+**[Shot 1]**
+*   **Visual description**: [Detailed image content — foreground / midground / background, character action, product state. Must include specific visual details. If this is a rapid-cut montage sequence, list the consecutive short shots here.]
+*   **Camera movement**: [e.g.: static / slow push-in / aerial tracking / dynamic quick cut / POV over-shoulder / orbit shot]
+*   **Voiceover copy / subtitle**: [Concise copy; write "None" if absent]
+*   **Sound design**: [Specific ambient sounds or action SFX, e.g., "light breeze," "leaf-snapping sound," "soft typing sound"]
+
+**[Shot 2]**
 *   ...
 
-#### ⏱️ 第二幕：[幕标题] (00:15 - 00:30)
+#### ⏱️ Act Two: [Act Title] (00:15 – 00:30)
 ...
-*(依此类推，直到包含 End Frame 收尾镜头的最后一幕)*
+*(Continue in this manner until the final act containing the End Frame closing shot)*

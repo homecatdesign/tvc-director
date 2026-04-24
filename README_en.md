@@ -4,7 +4,7 @@
 
 From product brief to cinematic TVC keyframes — your AI advertising creative director.
 
-A skill that turns your AI agent into a **TVC Advertising Creative Director**, handling the complete creative pipeline for television commercials and brand advertising: from a product brief to production-ready multi-grid storyboard image prompts and video prompts.
+A skill that turns your AI agent into a **TVC Advertising Creative Director**, handling the complete creative pipeline for television commercials and brand advertising: from a product brief to production-ready single-frame storyboard image prompts and video prompts.
 
 ## How It Works
 
@@ -21,7 +21,7 @@ The workflow mirrors real TVC advertising production stages:
   Phase 6: Review & Iteration    ← Director's Review + Revisions
   Phase 7: Delivery              ← Final Delivery
         ↓
-  Copy-paste-ready multi-grid storyboard image prompts,
+  Copy-paste-ready single-frame storyboard image prompts,
   video prompts & creative docs
 ```
 
@@ -56,30 +56,30 @@ A real end-to-end example — from a reference photo to a 15-second commercial.
 
 The AI enters the full creative pipeline: brief analysis → creative concept → art style → asset generation → storyboard + video script.
 
-### Step 2 — AI generates multiview prompts → Nano Banana Pro renders
+### Step 2 — AI generates 4 product image prompts → Nano Banana Pro renders each separately
 
-The AI outputs product multiview prompts. Copy to Nano Banana Pro (edit mode, pass in the reference image) to get standardized multi-angle product shots:
+The AI outputs 4 independent product image prompts (A1-1 front 45° / A1-2 pure side / A1-3 rear / A1-4 grille macro). Copy each into Nano Banana Pro (edit mode, pass in the reference image) to get 4 standardized product shots from different angles:
 
-<img src="https://github.com/user-attachments/assets/9d97df38-79f1-4a6a-a6bb-0fdbd731faca" width="600" alt="Product multiview" />
+<img src="https://github.com/user-attachments/assets/9d97df38-79f1-4a6a-a6bb-0fdbd731faca" width="600" alt="Product multi-angle images" />
 
-### Step 3 — AI generates 3×3 storyboard prompts → Nano Banana Pro renders
+### Step 3 — AI generates 8 single-frame storyboard prompts → Nano Banana Pro renders each separately
 
-The AI outputs a 3×3 multi-grid storyboard prompt (with per-panel composition, lighting, and camera direction). Copy to Nano Banana Pro (edit mode, pass in multiview + environment images):
+The AI first plans the full narrative timeline (0–15s across 8 shots), then outputs prompts one frame at a time. For each frame, upload the matching A1 angle image in edit mode (front-facing shots use A1-1, side shots use A1-2, and so on) to get 8 coherent, individual storyboard frames:
 
-<img src="https://github.com/user-attachments/assets/1ca54c8a-e1c2-4a13-8e67-461ea327f2ab" width="600" alt="3×3 storyboard grid" />
+<img src="https://github.com/user-attachments/assets/1ca54c8a-e1c2-4a13-8e67-461ea327f2ab" width="600" alt="Single-frame storyboards" />
 
 ### Step 4 — AI generates video prompts → Seedance renders video
 
-The AI outputs a Seedance Multi-Phase video script (5 phases / 15s). Use the storyboard grid as the first frame + product multiview as the anchor, dual-image input to Seedance for the final video.
+The AI outputs a Seedance Multi-Phase video script (8 Phases / 15s). Use Frame 1 (first frame reference) + A1-X (product anchor) as dual-image input to Seedance to generate the final video.
 
 ### Output Summary
 
-| Deliverable | Tool | Purpose |
-|-------------|------|---------|
-| Product multiview | Nano Banana Pro (edit) | Product anchor for subsequent steps |
-| 3×3 storyboard grid | Nano Banana Pro (edit) | Video first frame + visual QA |
-| Multi-Phase video script | Seedance | Generate 15s final video |
-| Creative brief document | — | Full creative brief for archival |
+| Deliverable | Count | Tool | Purpose |
+|-------------|-------|------|---------|
+| Product images (A1-1 ~ A1-4) | 4 images | Nano Banana Pro (edit) | Product appearance anchor, referenced by angle |
+| Single-frame storyboards (Frame 1 ~ 8) | 8 images | Nano Banana Pro (edit) | Full narrative timeline; Frame 1 passed into Seedance |
+| Multi-Phase video script | 1 | Seedance | Generate 15s final video |
+| Creative brief document | 1 | — | Full creative brief for archival |
 
 ## Design Philosophy
 
@@ -160,31 +160,30 @@ my-tvc-project/
 ├── concept.md                      # TVC creative brief
 ├── storyboard.md                   # Storyboard (if applicable)
 │
-├── assets/                         # Product asset prompts (Nano Banana Pro)
+├── assets/                         # Product image prompts (Nano Banana Pro)
 │   └── prompts/
-│       ├── product-multiview.md
-│       ├── product-detail-01.md
-│       ├── env-01-extreme-sports.md
-│       └── ...
+│       ├── A1-1-front-45.md        # Front 45° top-down full body
+│       ├── A1-2-side.md            # Pure side full body
+│       ├── A1-3-rear.md            # Rear full body
+│       └── A1-4-grille-detail.md   # Grille + headlight macro
 │
-├── keyframes/                      # Storyboard keyframe prompts (Nano Banana Pro)
+├── keyframes/                      # Single-frame storyboard prompts (Nano Banana Pro)
 │   └── prompts/
-│       ├── grid-01-brand-world.md
-│       ├── grid-02-product-world.md
-│       ├── endframe.md
-│       └── ...
+│       ├── frame-01-hook.md        # 0–2s Opening hook
+│       ├── frame-02.md
+│       ├── ...
+│       ├── frame-07-hero.md        # 11–13s Hero Shot
+│       └── frame-08-endframe.md    # 13–15s End Frame
 │
 └── video-scripts/                  # Multi-Phase video prompts (Seedance)
-    ├── segment-01-brand-world.md
-    ├── segment-02-product-breakdown.md
-    └── ...
+    └── segment-01-15s.md
 ```
 
 ## How to Use Deliverables
 
-1. **Product multiview** — Copy prompts from `assets/prompts/product-multiview.md` into Nano Banana Pro, edit mode, pass in reference image
-2. **Storyboard keyframes** — Copy prompts from `keyframes/prompts/` into Nano Banana Pro, edit mode, pass in multiview + environment images
-3. **Video scripts** — Use Multi-Phase scripts from `video-scripts/` with the storyboard grid as first frame + product multiview, input to Seedance
+1. **Product images (A1-1 ~ A1-4)** — Copy each prompt into Nano Banana Pro, edit mode, pass in the reference image to generate 4 product shots from different angles
+2. **Single-frame storyboards (frame-01 ~ frame-08)** — Copy each prompt into Nano Banana Pro, edit mode, pass in the matching A1 angle image (front shots → A1-1, side shots → A1-2, rear shots → A1-3, detail shots → A1-4)
+3. **Video scripts** — Use the Multi-Phase script with Frame 1 (first frame reference) + A1-X (product anchor) as dual-image input to Seedance to generate the final video
 
 ## Knowledge Base Architecture
 

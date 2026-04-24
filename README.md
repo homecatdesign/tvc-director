@@ -4,7 +4,7 @@
 
 从产品 brief 到电影级 TVC 关键帧——你的 AI 广告创意导演。
 
-一个将 AI Agent 转化为 **TVC 广告创意导演** 的 Skill，覆盖电视广告和品牌广告的完整创意流程：从产品 brief 到可直接使用的多宫格分镜图片提示词和视频提示词。
+一个将 AI Agent 转化为 **TVC 广告创意导演** 的 Skill，覆盖电视广告和品牌广告的完整创意流程：从产品 brief 到可直接使用的单帧分镜图片提示词和视频提示词。
 
 ## 工作流程
 
@@ -21,7 +21,7 @@
   Phase 6: 审片迭代        ← 导演审片 + 修改
   Phase 7: 交付打包        ← 终版交付
         ↓
-  可直接复制使用的多宫格分镜图片提示词、
+  可直接复制使用的单帧分镜图片提示词、
   视频提示词和创意方案文档
 ```
 
@@ -56,30 +56,30 @@ https://github.com/user-attachments/assets/df2d51af-acc2-4f34-a228-8b35ea754345
 
 AI 会自动进入完整创意流：需求拆解 → 创意构思 → 画风确认 → 资产生成 → 分镜 + 视频脚本。
 
-### Step 2 — AI 生成产品多视图提示词 → Nano Banana Pro 出图
+### Step 2 — AI 生成 4 张产品图提示词 → Nano Banana Pro 分别出图
 
-AI 输出产品多视图提示词，复制到 Nano Banana Pro（edit 模式，传入参考图），得到标准化的多角度产品图：
+AI 输出 4 张独立产品图提示词（A1-1 正前45° / A1-2 纯侧面 / A1-3 正后方 / A1-4 格栅微距），分别复制到 Nano Banana Pro（edit 模式，传入参考图），得到 4 张不同角度的标准化产品图：
 
 <img src="https://github.com/user-attachments/assets/9d97df38-79f1-4a6a-a6bb-0fdbd731faca" width="600" alt="产品多视图" />
 
-### Step 3 — AI 生成 9 宫格分镜提示词 → Nano Banana Pro 出图
+### Step 3 — AI 生成 8 张单帧分镜提示词 → Nano Banana Pro 分别出图
 
-AI 输出 3×3 多宫格分镜提示词（包含逐格构图、光影、运镜描述），复制到 Nano Banana Pro（edit 模式，传入多视图 + 环境图），得到完整分镜：
+AI 先规划完整叙事时间线（0-15s 共 8 个镜头），确认后逐帧输出提示词。每张单帧 edit 模式上传对应视角的产品图作为参考（正面镜头传 A1-1，侧面镜头传 A1-2，以此类推），得到 8 张连贯的独立分镜图：
 
-<img src="https://github.com/user-attachments/assets/1ca54c8a-e1c2-4a13-8e67-461ea327f2ab" width="600" alt="9 宫格分镜" />
+<img src="https://github.com/user-attachments/assets/1ca54c8a-e1c2-4a13-8e67-461ea327f2ab" width="600" alt="单帧分镜" />
 
 ### Step 4 — AI 生成视频提示词 → Seedance 生成视频
 
-AI 同步输出 Seedance Multi-Phase 视频提示词（5 Phase / 15s），配合多宫格作为首帧 + 产品多视图作为锚定，双图输入 Seedance 生成最终视频。
+AI 同步输出 Seedance Multi-Phase 视频提示词（8 Phase / 15s），配合单帧1 作为首帧 + A1-X 作为产品锚定，双图输入 Seedance 生成最终视频。
 
 ### 产出物一览
 
-| 产出物 | 工具 | 用途 |
-|--------|------|------|
-| 产品多视图 | Nano Banana Pro (edit) | 产品锚定，供后续步骤引用 |
-| 9 宫格分镜图 | Nano Banana Pro (edit) | 视频首帧 + 视觉校对 |
-| Multi-Phase 视频脚本 | Seedance | 生成 15s 成片 |
-| 创意方案文档 | — | 完整创意 brief 存档 |
+| 产出物 | 数量 | 工具 | 用途 |
+|--------|------|------|------|
+| 产品图（A1-1 ~ A1-4） | 4 张 | Nano Banana Pro (edit) | 产品外观锚定，按视角引用 |
+| 单帧分镜图（单帧1 ~ 单帧8） | 8 张 | Nano Banana Pro (edit) | 完整叙事时间线，首帧传入 Seedance |
+| Multi-Phase 视频脚本 | 1 份 | Seedance | 生成 15s 成片 |
+| 创意方案文档 | 1 份 | — | 完整创意 brief 存档 |
 
 ## 设计理念
 
@@ -160,31 +160,30 @@ my-tvc-project/
 ├── concept.md                      # TVC 创意方案文档
 ├── storyboard.md                   # 分镜脚本（如有）
 │
-├── assets/                         # 产品资产图提示词（Nano Banana Pro）
+├── assets/                         # 产品图提示词（Nano Banana Pro）
 │   └── prompts/
-│       ├── product-multiview.md
-│       ├── product-detail-01.md
-│       ├── env-01-extreme-sports.md
-│       └── ...
+│       ├── A1-1-front-45.md        # 正前方45°俯视全身
+│       ├── A1-2-side.md            # 纯侧面全身
+│       ├── A1-3-rear.md            # 正后方全身
+│       └── A1-4-grille-detail.md   # 格栅+大灯微距
 │
-├── keyframes/                      # 分镜关键帧提示词（Nano Banana Pro）
+├── keyframes/                      # 单帧分镜提示词（Nano Banana Pro）
 │   └── prompts/
-│       ├── grid-01-brand-world.md
-│       ├── grid-02-product-world.md
-│       ├── endframe.md
-│       └── ...
+│       ├── frame-01-hook.md        # 0-2s 开场
+│       ├── frame-02.md
+│       ├── ...
+│       ├── frame-07-hero.md        # 11-13s Hero Shot
+│       └── frame-08-endframe.md    # 13-15s End Frame
 │
 └── video-scripts/                  # Multi-Phase 视频提示词（Seedance）
-    ├── segment-01-brand-world.md
-    ├── segment-02-product-breakdown.md
-    └── ...
+    └── segment-01-15s.md
 ```
 
 ## 如何使用交付物
 
-1. **产品多视图** — 将 `assets/prompts/product-multiview.md` 中的提示词复制到 Nano Banana Pro，选择 edit 模式，传入参考图
-2. **分镜关键帧** — 将 `keyframes/prompts/` 下的提示词复制到 Nano Banana Pro，edit 模式，传入多视图 + 环境图
-3. **视频脚本** — 将 `video-scripts/` 下的 Multi-Phase 脚本配合多宫格首帧 + 产品多视图，输入 Seedance 生成视频
+1. **产品图（A1-1 ~ A1-4）** — 分别复制到 Nano Banana Pro，edit 模式传入参考图，生成 4 张不同角度的产品图
+2. **单帧分镜（frame-01 ~ frame-08）** — 逐张复制到 Nano Banana Pro，edit 模式按视角传入对应产品图（正面镜头传 A1-1，侧面传 A1-2，后方传 A1-3，细节传 A1-4）
+3. **视频脚本** — 将 Multi-Phase 脚本配合单帧1（首帧参考）+ A1-X（产品锚定），双图输入 Seedance 生成视频
 
 ## 知识库架构
 
