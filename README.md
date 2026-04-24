@@ -1,6 +1,6 @@
 # TVC Director
 
-[中文版](README_en.md)
+[中文版](README_cn.md)
 
 From product brief to cinematic TVC keyframes — your AI advertising creative director.
 
