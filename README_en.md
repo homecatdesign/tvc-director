@@ -1,202 +1,202 @@
-# TVC Director
+# TVC Director · TVC 广告创意导演
 
-[中文版](README.md)
+[English](README.md)
 
-From product brief to cinematic TVC keyframes — your AI advertising creative director.
+从产品 brief 到电影级 TVC 关键帧——你的 AI 广告创意导演。
 
-A skill that turns your AI agent into a **TVC Advertising Creative Director**, handling the complete creative pipeline for television commercials and brand advertising: from a product brief to production-ready single-frame storyboard image prompts and video prompts.
+一个将 AI Agent 转化为 **TVC 广告创意导演** 的 Skill，覆盖电视广告和品牌广告的完整创意流程：从产品 brief 到可直接使用的单帧分镜图片提示词和视频提示词。
 
-## How It Works
+## 工作流程
 
-The workflow mirrors real TVC advertising production stages:
+整个流程对应真实 TVC 广告制作的阶段：
 
 ```
-"Make a 30-second TVC for an outdoor camera"
+"帮我做一条户外相机的30秒TVC"
         ↓
-  Phase 1: Creative Brief        ← Client Brief
-  Phase 2: Creative Proposal     ← Creative Director Pitch
-  Phase 3: Look Development      ← Art Style Lock
-  Phase 4: Pre-production        ← Casting & Wardrobe + Product Photography + Location Scouting
-  Phase 5: Storyboard & Shoot    ← Storyboard + On-set Shooting
-  Phase 6: Review & Iteration    ← Director's Review + Revisions
-  Phase 7: Delivery              ← Final Delivery
+  Phase 1: 创意简报        ← 客户 Brief
+  Phase 2: 创意提案        ← 创意总监提案会
+  Phase 3: 视觉定调        ← 美术风格确认
+  Phase 4: 前期筹备        ← 选角试装 + 产品定妆 + 堪景
+  Phase 5: 分镜与拍摄      ← 分镜脚本 + 现场拍摄
+  Phase 6: 审片迭代        ← 导演审片 + 修改
+  Phase 7: 交付打包        ← 终版交付
         ↓
-  Copy-paste-ready single-frame storyboard image prompts,
-  video prompts & creative docs
+  可直接复制使用的单帧分镜图片提示词、
+  视频提示词和创意方案文档
 ```
 
-## Key Features
+## 核心特性
 
-- **Mirrors real TVC production** — Casting & wardrobe, product photography, location scouting, storyboarding, shooting — each stage has a corresponding AI prompt deliverable
-- **End-to-end creative pipeline** — From a one-line brief to deliverable storyboard prompts and video scripts, fully AI-driven
-- **8 TVC narrative models** — Problem-solution, cinematic product breakdown, brand world crosscut, and more
-- **Cinematic visual system** — 5 art style presets (A-E), 12 scene types, per-second camera choreography
-- **Product + brand world dual narrative** — Not just product close-ups, but crosscut storytelling in real-world scenes
-- **Copy-paste ready** — Output prompts work directly in Nano Banana Pro / Seedance with no rework needed
+- **类比真实 TVC 制片流程** — 选角试装、产品定妆照、场景堪景、分镜脚本、拍摄执行——每个环节都有对应的 AI 提示词产出物
+- **完整创意流水线** — 从一句话需求到可交付的分镜提示词和视频脚本，全程 AI 驱动
+- **8 种 TVC 叙事模型** — 痛点-解决、产品电影化拆解、品牌世界穿梭等，覆盖主流广告叙事
+- **电影级视觉系统** — 5 种画风预设（A-E）、12 种场景类型、精确到秒的运镜编排
+- **产品+品牌世界双线叙事** — 不只是产品特写，而是产品在真实场景中的交叉剪辑
+- **即拷即用** — 产出的提示词可直接粘贴到 Nano Banana Pro / Seedance，无需二次加工
 
-## Demo
+## 成品展示
 
-### Car TVC — Cinematic Product Breakdown
+### 汽车 TVC — 产品电影化拆解
 
 https://github.com/user-attachments/assets/541055ed-d716-4087-86e2-a27d375282ed
 
-### Perfume TVC — Brand World Crosscut
+### 香水 TVC — 品牌世界穿梭
 
 https://github.com/user-attachments/assets/df2d51af-acc2-4f34-a228-8b35ea754345
 
-## Quick Start: Making a Car TVC
+## 快速上手：一条汽车 TVC 的诞生
 
-A real end-to-end example — from a reference photo to a 15-second commercial.
+以下是一个真实的端到端案例——从一张参考图到 15 秒成片。
 
-### Step 1 — Provide a reference image + one-line brief
+### Step 1 — 给一张参考图 + 一句话需求
 
-> "Make a 15-second TVC for this silver sedan"
+> "帮我做一条银色轿跑的 15 秒 TVC"
 
-<img src="https://github.com/user-attachments/assets/0d774888-0dbb-4fb7-a861-ca3116b812b7" width="400" alt="Reference: silver sedan" />
+<img src="https://github.com/user-attachments/assets/0d774888-0dbb-4fb7-a861-ca3116b812b7" width="400" alt="参考图：银色轿跑" />
 
-The AI enters the full creative pipeline: brief analysis → creative concept → art style → asset generation → storyboard + video script.
+AI 会自动进入完整创意流：需求拆解 → 创意构思 → 画风确认 → 资产生成 → 分镜 + 视频脚本。
 
-### Step 2 — AI generates 4 product image prompts → Nano Banana Pro renders each separately
+### Step 2 — AI 生成 4 张产品图提示词 → Nano Banana Pro 分别出图
 
-The AI outputs 4 independent product image prompts (A1-1 front 45° / A1-2 pure side / A1-3 rear / A1-4 grille macro). Copy each into Nano Banana Pro (edit mode, pass in the reference image) to get 4 standardized product shots from different angles:
+AI 输出 4 张独立产品图提示词（A1-1 正前45° / A1-2 纯侧面 / A1-3 正后方 / A1-4 格栅微距），分别复制到 Nano Banana Pro（edit 模式，传入参考图），得到 4 张不同角度的标准化产品图：
 
-<img src="https://github.com/user-attachments/assets/9d97df38-79f1-4a6a-a6bb-0fdbd731faca" width="600" alt="Product multi-angle images" />
+<img src="https://github.com/user-attachments/assets/9d97df38-79f1-4a6a-a6bb-0fdbd731faca" width="600" alt="产品多视图" />
 
-### Step 3 — AI generates 8 single-frame storyboard prompts → Nano Banana Pro renders each separately
+### Step 3 — AI 生成 8 张单帧分镜提示词 → Nano Banana Pro 分别出图
 
-The AI first plans the full narrative timeline (0–15s across 8 shots), then outputs prompts one frame at a time. For each frame, upload the matching A1 angle image in edit mode (front-facing shots use A1-1, side shots use A1-2, and so on) to get 8 coherent, individual storyboard frames:
+AI 先规划完整叙事时间线（0-15s 共 8 个镜头），确认后逐帧输出提示词。每张单帧 edit 模式上传对应视角的产品图作为参考（正面镜头传 A1-1，侧面镜头传 A1-2，以此类推），得到 8 张连贯的独立分镜图：
 
-<img src="https://github.com/user-attachments/assets/1ca54c8a-e1c2-4a13-8e67-461ea327f2ab" width="600" alt="Single-frame storyboards" />
+<img src="https://github.com/user-attachments/assets/1ca54c8a-e1c2-4a13-8e67-461ea327f2ab" width="600" alt="单帧分镜" />
 
-### Step 4 — AI generates video prompts → Seedance renders video
+### Step 4 — AI 生成视频提示词 → Seedance 生成视频
 
-The AI outputs a Seedance Multi-Phase video script (8 Phases / 15s). Use Frame 1 (first frame reference) + A1-X (product anchor) as dual-image input to Seedance to generate the final video.
+AI 同步输出 Seedance Multi-Phase 视频提示词（8 Phase / 15s），配合单帧1 作为首帧 + A1-X 作为产品锚定，双图输入 Seedance 生成最终视频。
 
-### Output Summary
+### 产出物一览
 
-| Deliverable | Count | Tool | Purpose |
-|-------------|-------|------|---------|
-| Product images (A1-1 ~ A1-4) | 4 images | Nano Banana Pro (edit) | Product appearance anchor, referenced by angle |
-| Single-frame storyboards (Frame 1 ~ 8) | 8 images | Nano Banana Pro (edit) | Full narrative timeline; Frame 1 passed into Seedance |
-| Multi-Phase video script | 1 | Seedance | Generate 15s final video |
-| Creative brief document | 1 | — | Full creative brief for archival |
+| 产出物 | 数量 | 工具 | 用途 |
+|--------|------|------|------|
+| 产品图（A1-1 ~ A1-4） | 4 张 | Nano Banana Pro (edit) | 产品外观锚定，按视角引用 |
+| 单帧分镜图（单帧1 ~ 单帧8） | 8 张 | Nano Banana Pro (edit) | 完整叙事时间线，首帧传入 Seedance |
+| Multi-Phase 视频脚本 | 1 份 | Seedance | 生成 15s 成片 |
+| 创意方案文档 | 1 份 | — | 完整创意 brief 存档 |
 
-## Design Philosophy
+## 设计理念
 
-Traditional AI-generated ads tend to be an endless loop of "product + black background + rotation." TVC Director is different — it organizes prompt generation around the real TVC production SOP, so every prompt maps to a specific production stage:
+传统 AI 生成广告往往只是"产品 + 黑底 + 旋转"的无限循环。TVC Director 不同——它按真实 TVC 制片 SOP 组织提示词生成，让每条提示词都有明确的制作环节归属：
 
-- **Narrative-driven** — Determine the narrative model and creative direction first, then generate visuals; no mindless template filling
-- **Dual-world crosscutting** — Product close-ups interweave with brand world scenes, telling stories like a real TVC
-- **Per-second camera design** — Every storyboard panel has explicit shot size, angle, lighting, and transition logic
-- **Progressive human-AI collaboration** — Intervene and adjust at every phase; not a black-box one-click generator
+- **叙事驱动** — 先确定叙事模型和创意方向，再生成视觉，不是无脑套模板
+- **双世界交叉剪辑** — 产品特写与品牌世界场景交织，像真正的 TVC 一样讲故事
+- **精确到秒的运镜设计** — 每一格分镜都有明确的景别、角度、光影和转场逻辑
+- **渐进式人机协作** — 每个阶段都可以介入调整，不是一键出片的黑盒
 
-## Three Core Capabilities
+## 三大核心能力
 
-### 1. Cinematic Product Breakdown
+### 1. 产品电影化拆解（Cinematic Product Breakdown）
 
-Product as sole protagonist, pure studio, multi-phase product micro-films:
+产品是唯一主角，纯影棚，多 Phase 的产品微电影：
 
-- Component disassembly/assembly animations (floating parts, exploded views, snap-back)
-- Material macro shots (brushed metal, glass refraction, carbon fiber weave)
-- Precise per-second camera choreography (ultra-slow reveal → explosive rotation → macro dive)
-- Cinematic studio lighting (low-key, side light silhouettes, light flowing with rotation)
+- 零件悬浮拆解/精密组装动画
+- 材质微距：金属磨砂纹理、玻璃折射、碳纤维编织
+- 精确到秒的运镜编排：极慢拆解 → 爆发旋转 → 悬浮凝视 → 俯冲穿越
+- 光影叙事：低调影棚光、侧光勾勒轮廓、光随旋转流动
 
-### 2. Brand World Crosscut
+### 2. 品牌世界穿梭（Brand World Crosscut）
 
-Brand world and product world take turns, connected via match cuts:
+品牌世界和产品世界轮流出场，用 Match Cut 衔接：
 
-- Action cameras → skydiving, diving, skiing, climbing
-- Off-road vehicles → mountain roads, desert, snow
-- Each Phase stays in one world; world switches happen between Phases
+- 运动相机 → 跳伞、潜水、滑雪、攀岩
+- 越野车 → 盘山弯道、沙漠、雪地
+- 每个 Phase 完整待在一个世界里，通过匹配剪辑无缝切换
 
-### 3. Lifestyle Film
+### 3. 生活方式短片（Lifestyle Film）
 
-Product stays in the brand world throughout — no studio cutaways:
+产品始终待在品牌世界中，不跳出去做影棚特写：
 
-- Running shoes on feet, watches on wrists, glasses on faces
-- Highlighted through cinematography (low-angle tracking, slow motion, depth-of-field shifts)
-- Hero Shot concentrated at the end
+- 跑鞋穿在脚上、手表戴在手腕、眼镜架在鼻梁
+- 通过运镜手法（低角度追拍、慢动作、景深变化）自然突出产品
+- 片尾集中做 Hero Shot 收束
 
-## Installation
+## 安装
 
 ### Cursor
 
 ```bash
-git clone https://github.com/Ethanxwang/tvc-director.git ~/.cursor/skills/tvc-director
+git clone https://github.com/homecatdesign/tvc-director.git ~/.cursor/skills/tvc-director
 ```
 
 ### Claude Code
 
 ```bash
-git clone https://github.com/Ethanxwang/tvc-director.git ~/.claude/skills/tvc-director
+git clone https://github.com/homecatdesign/tvc-director.git ~/.claude/skills/tvc-director
 ```
 
-## Entry Modes
+## 入口模式
 
-| Mode | Trigger | Description |
-|------|---------|-------------|
-| **A: Full TVC Pipeline** | "帮我做一条xx产品广告" | Brief → Concept → Style → Assets → Keyframes → Package |
-| **B: Quick Asset/Prompt** | "帮我做一个产品 Hero Shot" | Skip creative phase, go to asset or keyframe generation |
-| **C: Storyboard** | Provide a TVC script/storyboard | Style → Assets → Convert storyboard to keyframes |
-| **D: Iteration** | "这张产品图xx不对" | Fix and regenerate specific assets or keyframes |
+| 模式 | 触发信号 | 说明 |
+|------|---------|------|
+| **A：完整 TVC 创意流** | "帮我做一条xx产品广告" | Brief → 创意 → 画风 → 资产 → 分镜 → 打包 |
+| **B：快速资产/提示词** | "帮我做一个产品 Hero Shot" | 跳过创意阶段，直接生成资产或关键帧提示词 |
+| **C：分镜转化** | 提供 TVC 分镜脚本 | 画风 → 资产 → 将分镜转化为关键帧提示词 |
+| **D：迭代修正** | "这张产品图xx不对" | 定位问题并提供修正版提示词 |
 
-## TVC Narrative Models
+## TVC 叙事模型
 
-| Model | Name | Core Logic |
-|-------|------|-----------|
-| A | Problem-Solution | Pain point → product saves the day |
-| B | Cinematic Product Breakdown | Multi-phase micro-film revealing USPs |
-| C | Brand World Crosscut | Scene ↔ product close-up crosscutting |
-| D | Lifestyle Film | Product stays in scene, highlighted by cinematography |
-| E | Emotional Anchor | Emotional story, product as carrier |
-| F | Montage Reveal | Visual spectacle → product reveal |
-| G | Before/After | Before/after strong contrast |
-| H | Brand Anthem | Values-driven, product closes |
+| 模型 | 名称 | 核心逻辑 |
+|------|------|---------|
+| A | 痛点-解决 | 痛点场景 → 产品拯救 |
+| B | 产品电影化拆解 | 多 Phase 微电影逐步揭示卖点 |
+| C | 品牌世界穿梭 | 使用场景 ↔ 产品特写交叉剪辑 |
+| D | 生活方式短片 | 产品始终在场景中，运镜突出 |
+| E | 情感锚点 | 情感故事，产品为载体 |
+| F | 蒙太奇揭示 | 视觉奇观 → 产品揭示 |
+| G | 前后对比 | 使用前后的强烈反差 |
+| H | 品牌宣言 | 价值观驱动，产品收束 |
 
-## Deliverables
+## 交付物
 
 ```
 my-tvc-project/
-├── concept.md                      # TVC creative brief
-├── storyboard.md                   # Storyboard (if applicable)
+├── concept.md                      # TVC 创意方案文档
+├── storyboard.md                   # 分镜脚本（如有）
 │
-├── assets/                         # Product image prompts (Nano Banana Pro)
+├── assets/                         # 产品图提示词（Nano Banana Pro）
 │   └── prompts/
-│       ├── A1-1-front-45.md        # Front 45° top-down full body
-│       ├── A1-2-side.md            # Pure side full body
-│       ├── A1-3-rear.md            # Rear full body
-│       └── A1-4-grille-detail.md   # Grille + headlight macro
+│       ├── A1-1-front-45.md        # 正前方45°俯视全身
+│       ├── A1-2-side.md            # 纯侧面全身
+│       ├── A1-3-rear.md            # 正后方全身
+│       └── A1-4-grille-detail.md   # 格栅+大灯微距
 │
-├── keyframes/                      # Single-frame storyboard prompts (Nano Banana Pro)
+├── keyframes/                      # 单帧分镜提示词（Nano Banana Pro）
 │   └── prompts/
-│       ├── frame-01-hook.md        # 0–2s Opening hook
+│       ├── frame-01-hook.md        # 0-2s 开场
 │       ├── frame-02.md
 │       ├── ...
-│       ├── frame-07-hero.md        # 11–13s Hero Shot
-│       └── frame-08-endframe.md    # 13–15s End Frame
+│       ├── frame-07-hero.md        # 11-13s Hero Shot
+│       └── frame-08-endframe.md    # 13-15s End Frame
 │
-└── video-scripts/                  # Multi-Phase video prompts (Seedance)
+└── video-scripts/                  # Multi-Phase 视频提示词（Seedance）
     └── segment-01-15s.md
 ```
 
-## How to Use Deliverables
+## 如何使用交付物
 
-1. **Product images (A1-1 ~ A1-4)** — Copy each prompt into Nano Banana Pro, edit mode, pass in the reference image to generate 4 product shots from different angles
-2. **Single-frame storyboards (frame-01 ~ frame-08)** — Copy each prompt into Nano Banana Pro, edit mode, pass in the matching A1 angle image (front shots → A1-1, side shots → A1-2, rear shots → A1-3, detail shots → A1-4)
-3. **Video scripts** — Use the Multi-Phase script with Frame 1 (first frame reference) + A1-X (product anchor) as dual-image input to Seedance to generate the final video
+1. **产品图（A1-1 ~ A1-4）** — 分别复制到 Nano Banana Pro，edit 模式传入参考图，生成 4 张不同角度的产品图
+2. **单帧分镜（frame-01 ~ frame-08）** — 逐张复制到 Nano Banana Pro，edit 模式按视角传入对应产品图（正面镜头传 A1-1，侧面传 A1-2，后方传 A1-3，细节传 A1-4）
+3. **视频脚本** — 将 Multi-Phase 脚本配合单帧1（首帧参考）+ A1-X（产品锚定），双图输入 Seedance 生成视频
 
-## Knowledge Base Architecture
+## 知识库架构
 
-Knowledge base is organized by crew roles in real ad production, loaded on demand:
+知识库按真实广告制作的工种职责拆分，按需加载：
 
-| Crew Role | File | Real Production Equivalent | Loading |
-|-----------|------|---------------------------|---------|
-| Line Producer | `SKILL.md` | Production workflow control, phase transitions | Always loaded |
-| Creative Director | `treatment.md` | Creative pitches, narrative models, category strategy, casting decisions | Creative Proposal |
-| Director of Photography | `shot-language.md` | Shot language, art style system, scene types, composition paradigms | Look Dev / Storyboard |
-| Production Team | `pre-production.md` | Casting & wardrobe, product photography, location scouting, asset consistency | Pre-production |
-| Director | `storyboard.md` | Storyboard, video scripts, product breakdown, brand world shots | Storyboard & Shoot |
-| Post-production | `delivery.md` | Output formats, iteration guide (11 failure modes) | Review / Delivery |
+| 工种 | 文件 | 对应真实制作环节 | 加载时机 |
+|------|------|---------------|---------|
+| 制片统筹 | `SKILL.md` | 制片流程管控、阶段流转 | 始终加载 |
+| 创意总监 | `treatment.md` | 创意提案、叙事模型、品类策略、出镜决策 | 创意提案 |
+| 摄影指导 | `shot-language.md` | 镜头语言、画风体系、场景类型、构图范式 | 视觉定调 / 分镜 |
+| 制片组 | `pre-production.md` | 选角试装、产品定妆、堪景、资产一致性 | 前期筹备 |
+| 导演 | `storyboard.md` | 分镜脚本、视频脚本、产品拆解、品牌世界镜头 | 分镜与拍摄 |
+| 后期 | `delivery.md` | 输出格式、迭代调试（11 种常见失败模式） | 审片 / 交付 |
 
 ## License
 
